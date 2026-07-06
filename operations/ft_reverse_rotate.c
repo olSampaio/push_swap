@@ -6,23 +6,23 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:55:42 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/03 18:00:39 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/06 12:17:35 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rra(t_stack_a *list_a)
+void	rra(t_stack *list_a)
 {
 	
 }
 
-void	rrb(t_stack_b *list_b)
+void	rrb(t_stack *list_b)
 {
 	
 }
 
-void	rrr(t_stack_a *list_a, t_stack_b *list_b)
+void	rrr(t_stack *list_a, t_stack *list_b)
 {
 	rrb(list_a);
 	rra(list_b);
