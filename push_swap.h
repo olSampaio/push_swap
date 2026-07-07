@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/07 17:01:59 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/07 18:13:59 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void	ft_swap(t_stack **list);
 void	ss(t_stack **list_a, t_stack **list_b);
 void	ft_push(t_stack **src, t_stack **dest);
 void	ft_rotate(t_stack **list);
+void	ft_reverse_rotate(t_stack **list);
 void	rr(t_stack **list_a, t_stack **list_b);
-void	rra(t_stack *list);
-void	rrb(t_stack *list);
-void	rrr(t_stack *list);
+void	rrr(t_stack **list_a, t_stack **list_b);
 
 // FUNÇÕES AUXILIARES
 
