@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/07 12:45:52 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/07 20:13:31 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	ft_swap(t_stack **list)
 
 void	ss(t_stack **list_a, t_stack **list_b)
 {
-	swap(list_a);
-	swap(list_b);
+	ft_swap(list_a);
+	ft_swap(list_b);
 }
