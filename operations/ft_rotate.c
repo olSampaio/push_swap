@@ -6,20 +6,20 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:58:32 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/07 20:13:22 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/14 19:34:56 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_rotate(t_stack **list)
+static void	ft_rotate(t_stack **list)
 {		
 	t_stack *node_b;
 	t_stack *last;
 	
 	if (!*list)											// Caso a lista esteja vazia, retorne sem fazer nada.
 		return ;									
-	last = ft_lstlast(list);							// Guardei o último elemento da lista na varável last
+	last = ft_lstlast(*list);							// Guardei o último elemento da lista na varável last
 	if ((*list) -> next)
 		node_b = (*list) -> next;						// Caso haja outro elemento depois do primeiro, ele será guardado na var node_b
 	else
@@ -29,6 +29,16 @@ void	ft_rotate(t_stack **list)
 	last -> next = (*list);								// O last -> next irá ser o (*list), visto que agora ele será o último nó da lista
 	(*list) = node_b;									// A cabeça da lista (primeiro elemento) se tornará node_b, que era o segundo
 	(*list) -> prev = NULL;								// O node_b -> prev será NULL, pois ele agora é a cabeça da lista
+}
+
+void	ra(t_stack **list_a)
+{
+	ft_rotate(list_a);	
+}
+
+void	rb(t_stack **list_b)
+{	
+	ft_rotate(list_b);
 }
 
 void	rr(t_stack **list_a, t_stack **list_b)

@@ -6,20 +6,20 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:55:42 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/07 20:13:19 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/14 19:35:05 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_reverse_rotate(t_stack **list)
+static void	ft_reverse_rotate(t_stack **list)
 {
 	t_stack *penultimate;
 	t_stack *last;
 	
 	if (!*list)											// Caso a lista esteja vazia, retorne sem fazer nada.
 		return ;									
-	last = ft_lstlast(list);							// Guardei o último elemento da lista na varável last
+	last = ft_lstlast(*list);							// Guardei o último elemento da lista na varável last
 	if (last -> prev)
 		penultimate = last -> prev;						// Caso haja outro elemento antes do último, ele será guardado na var penultimate
 	else
@@ -29,6 +29,16 @@ void	ft_reverse_rotate(t_stack **list)
 	(*list) -> prev = last;								// O (*list) -> prev será o last, pois o antigo último elemento será agora o primeiro, antes do (*list)
 	(*list) = last;										// A cabeça da lista (primeiro elemento) se tornará last, que era o último
 	penultimate -> next = NULL;							// O penultimate -> next será NULL, pois antepenúltimo elemento agora se tornou o último
+}
+
+void	rra(t_stack **list_a)
+{
+	ft_reverse_rotate(list_a);	
+}
+
+void	rrb(t_stack **list_b)
+{	
+	ft_reverse_rotate(list_b);
 }
 
 void	rrr(t_stack **list_a, t_stack **list_b)

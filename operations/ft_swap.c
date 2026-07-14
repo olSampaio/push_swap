@@ -6,13 +6,13 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/07 20:13:31 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/14 14:24:33 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_swap(t_stack **list)
+static void	ft_swap(t_stack **list)
 {			
 	t_stack *node_b;
 	t_stack *node_c;
@@ -32,6 +32,16 @@ void	ft_swap(t_stack **list)
 	(*list) -> prev = node_b; 								// O elemento prévio da cabeça da lista (nó A) será o B
 	node_b -> next = (*list); 								// B irá apontar para A	como próximo
 	(*list) = node_b; 										// B irá se tornar a cabeça da lista	
+}
+
+void	sa(t_stack **list_a)
+{
+	ft_swap(list_a);	
+}
+
+void	sb(t_stack **list_b)
+{	
+	ft_swap(list_b);
 }
 
 void	ss(t_stack **list_a, t_stack **list_b)
