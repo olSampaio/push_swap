@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/16 17:31:06 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/17 19:46:35 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,18 @@ void	rrr(t_stack **list_a, t_stack **list_b);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
 int	ft_lstsize(t_stack *lst);
+int	ft_nearest_end(t_stack *node, int size);
 
 // ALGORITMOS
 
 void	ft_selection_sort(t_stack **list_a, t_stack **list_b);
 void	ft_bucket_sort(t_stack **list_a, t_stack **list_b);
+
+// ALGORITMOS - UTILS
+
+t_stack *ft_get_bigger(t_stack **list_b);
+void ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
+	t_stack *better_node);
+int	ft_bucket_count(int size);
 
 #endif
