@@ -6,72 +6,96 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 14:17:12 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/17 20:04:05 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	ft_bucket_count(int size)
+static	void ft_organize_return(t_stack **list_a, t_stack **list_b)
 {
-	int	count;
+	t_stack *bigger;
+	int nearest;
 
-	count = 0;
-	while (count * count < size)
-		count++;
-	return (count);
+	while(*list_b)
+	{
+		bigger = ft_get_bigger(list_b);
+		nearest = ft_nearest_end(bigger, ft_lstsize(*list_b));
+		if(nearest == 1)		
+			while(*list_b != bigger)
+				rb(list_b);
+		else
+			while(*list_b != bigger)
+				rrb(list_b);
+		pa(list_a, list_b);
+	}
 }
 
-static void	ft_nearest(t_stack *list_a, int size, int min_index, int max_index,
-	int *better_move, t_stack *better_node)
+static void	ft_bucket_nearest(t_stack *list, int size, int min_index, int max_index,
+	int *better_move, t_stack **better_node)
 {
-	int dist_start;
-	int dist_end;
-	int count_steps;	
+	int best_dist;
+	int dist;
+	int count_steps;
 
 	count_steps = 0;
-	dist_start = -1;
-	dist_end = -1;
-	while(list_a)
+	best_dist = -1;
+	while(list)
 	{
-		if(list_a -> index >= min_index && list_a -> index <= max_index)
+		if(list -> index >= min_index && list -> index <= max_index)
 		{
-			if (dist_start == -1 || count_steps < dist_start)
-				dist_start = count_steps;
-			if (dist_end == -1 || size - count_steps < dist_end)
+			dist = count_steps; // dist recebe a distância até o começo
+			if (size - count_steps < dist) // se a distância até o final for menor que a distância até o começo, dist recebe a distância até o final
+				dist = size - count_steps;			
+			if (best_dist == -1 || dist < best_dist)
 			{
-				dist_end = size - count_steps;			
-				better_node = list_a;
+				best_dist = dist;
+				*better_node = list;
+				*better_move = (count_steps > size - count_steps);
 			}
 		}
 		count_steps++;
-		list_a = list_a -> next;
+		list = list -> next;
+	}	
+}
+
+static void	ft_process_bucket(t_stack **list_a, t_stack **list_b,
+		int *size, int min_index, int max_index)
+{
+	int		bucket_atual_size;
+	int		better_move;
+	t_stack	*better_node;
+
+	bucket_atual_size = max_index - min_index;
+	while (bucket_atual_size-- >= 0)
+	{
+		ft_bucket_nearest(*list_a, *size, min_index, max_index,
+			&better_move, &better_node);
+		ft_move_best(list_a, list_b, better_move, better_node);
+		(*size)--;
 	}
-	better_move = 1;
-	if(dist_start < dist_end)
-		better_move = 0;
+	ft_organize_return(list_a, list_b);
 }
 
 void	ft_bucket_sort(t_stack **list_a, t_stack **list_b)
 {
-	int size;
-	int qt_buckets;
-	int bucket_size;
-	int max_index;
-	int min_index;
-	int better_move; // variável para retornar 0 caso seja melhor ra e 1 caso seja melhor rra
-	t_stack *better_node;
-	
+	int	size;
+	int	qt_buckets;
+	int	bucket_size;
+	int	max_index;
+	int	min_index;
+
 	size = ft_lstsize(*list_a);
 	qt_buckets = ft_bucket_count(size);
 	bucket_size = (size + qt_buckets - 1) / qt_buckets;
 	max_index = size - 1;
-	while(--qt_buckets >= 0)
+	while (--qt_buckets >= 0)
 	{
-		min_index = (max_index - (bucket_size - 1));
+		size = ft_lstsize(*list_a);
+		min_index = max_index - (bucket_size - 1);
 		if (min_index < 0)
 			min_index = 0;
-		ft_nearest(*list_a, size, min_index, max_index, &better_move, &better_node);
+		ft_process_bucket(list_a, list_b, &size, min_index, max_index);
 		max_index = max_index - bucket_size;
 	}
 }
