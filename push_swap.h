@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/15 19:57:27 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/16 17:31:06 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	rrr(t_stack **list_a, t_stack **list_b);
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
+int	ft_lstsize(t_stack *lst);
 
 // ALGORITMOS
 
