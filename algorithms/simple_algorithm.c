@@ -6,30 +6,15 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:31:30 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/14 19:34:04 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:33:31 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static size_t	ft_list_size(t_stack **list_a)
-{
-	size_t size;
-	t_stack *node;
-
-	size = 0;
-	node = *list_a;
-	while(node)
-	{
-		node = node -> next;
-		size++;
-	}
-	return (size);
-}
-
-static int	ft_nearest_end(t_stack *node, size_t size)
+static int	ft_nearest_end(t_stack *node, int size)
 {	
-	size_t count_steps;
+	int count_steps;
 
 	count_steps = 0;							// CONTA A QUANTIDADE DE PASSOS PARA CHEGAR ATÉ O FINAL A PARTIR DO ELEMENTO
 	while(node -> next)
@@ -61,10 +46,10 @@ static t_stack *ft_get_smaller(t_stack **list_a)
 
 void	ft_selection_sort(t_stack **list_a, t_stack **list_b)
 {
-	size_t	size;
+	int	size;
 	t_stack	*smaller;
 
-	size = ft_list_size(list_a);
+	size = ft_lstsize(*list_a);
 	while(*list_a)
 	{		
 		smaller = ft_get_smaller(list_a);
