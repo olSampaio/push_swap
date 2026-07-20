@@ -6,11 +6,11 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:31:30 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 19:45:41 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:06:09 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static t_stack *ft_get_smaller(t_stack **list_a)
 {

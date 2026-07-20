@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:35:05 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 19:53:16 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/20 09:33:48 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ t_stack *ft_get_bigger(t_stack **list_b)
 void ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
 	t_stack *better_node)
 {
-	if (better_move == 0)	
+	if (better_move == 0)
 		while(*list_a != better_node)
 			ra(list_a);	
 	else	
 		while(*list_a != better_node)
-			rra(list_a);	
+			rra(list_a);
 	pb(list_a, list_b);
 }
 
