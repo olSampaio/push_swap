@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 20:04:05 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/20 09:34:47 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_bucket_nearest(t_stack *list, int size, int min_index, int max_in
 		{
 			dist = count_steps; // dist recebe a distância até o começo
 			if (size - count_steps < dist) // se a distância até o final for menor que a distância até o começo, dist recebe a distância até o final
-				dist = size - count_steps;			
+				dist = size - count_steps;
 			if (best_dist == -1 || dist < best_dist)
 			{
 				best_dist = dist;
@@ -74,7 +74,6 @@ static void	ft_process_bucket(t_stack **list_a, t_stack **list_b,
 		ft_move_best(list_a, list_b, better_move, better_node);
 		(*size)--;
 	}
-	ft_organize_return(list_a, list_b);
 }
 
 void	ft_bucket_sort(t_stack **list_a, t_stack **list_b)
@@ -98,4 +97,5 @@ void	ft_bucket_sort(t_stack **list_a, t_stack **list_b)
 		ft_process_bucket(list_a, list_b, &size, min_index, max_index);
 		max_index = max_index - bucket_size;
 	}
+	ft_organize_return(list_a, list_b);
 }

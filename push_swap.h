@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 19:46:35 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:03:16 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 // DECLARAÇÃO DO STRUCT
 
@@ -44,8 +45,8 @@ void	rrr(t_stack **list_a, t_stack **list_b);
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
-int	ft_lstsize(t_stack *lst);
-int	ft_nearest_end(t_stack *node, int size);
+int		ft_lstsize(t_stack *lst);
+int		ft_nearest_end(t_stack *node, int size);
 
 // ALGORITMOS
 
