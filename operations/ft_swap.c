@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/14 14:24:33 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:02:42 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../ft_printf/ft_printf.h"
 
 static void	ft_swap(t_stack **list)
 {			
@@ -34,18 +35,25 @@ static void	ft_swap(t_stack **list)
 	(*list) = node_b; 										// B irá se tornar a cabeça da lista	
 }
 
-void	sa(t_stack **list_a)
+void	sa(t_stack **list_a, t_operations *ops)
 {
 	ft_swap(list_a);	
+	ops->sa++;
+	ft_printf("sa/n");
 }
 
-void	sb(t_stack **list_b)
+void	sb(t_stack **list_b, t_operations *ops)
 {	
 	ft_swap(list_b);
+	ops->sb++;
+	ft_printf("sb/n");
 }
 
-void	ss(t_stack **list_a, t_stack **list_b)
+void	ss(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	ft_swap(list_a);
 	ft_swap(list_b);
+	ops->sa++;
+	ops->sb++;
+	ft_printf("ss/n");
 }

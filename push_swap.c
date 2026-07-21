@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 15:59:03 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:30:13 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
 	t_stack	*new_node;
-	int		j;	
+	int		j;
 
 	i = argc - 1;
 	while (i >= 1)
@@ -29,63 +29,81 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 			new_node->index = 0;
 			new_node->next = NULL;
 			new_node->prev = NULL;
-			ft_lstadd_front(list_a, new_node);			
+			ft_lstadd_front(list_a, new_node);
 		}
 		i--;
 	}
 }
 
-static int verify_flags(char *argv, int *use_bench)
+static int	verify_flags(char *argv, int *use_bench)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while(argv[i++])
+	while (argv[i++])
 	{
 		if (ft_strcmp(&argv[i], "--simple"))
-			return 1;
+			return (1);
 		else if (ft_strcmp(&argv[i], "--medium"))
-			return 2;
+			return (2);
 		else if (ft_strcmp(&argv[i], "--complex"))
-			return 3;
+			return (3);
 		else if (ft_strcmp(&argv[i], "--adaptive"))
-			return 0;
+			return (0);
 		else if (ft_strcmp(&argv[i], "--bench"))
 			*use_bench = 1;
 	}
-	return 0;
+	return (0);
 }
 
-static void ft_call_algorithm(t_stack **list_a, t_stack **list_b,int algorithm_choice, int disorder)
+static void	ft_call_algorithm(t_stack **list_a, t_stack **list_b,
+		int algorithm_choice, int disorder, t_operations *ops)
 {
 	if (algorithm_choice == 1)
-		ft_selection_sort(list_a, list_b);
+		ft_selection_sort(list_a, list_b, ops);
 	else if (algorithm_choice == 2)
-		ft_bucket_sort(list_a, list_b);
+		ft_bucket_sort(list_a, list_b, ops);
 	else if (algorithm_choice == 3)
-		ft_radix_sort(list_a, list_b);
+		ft_radix_sort(list_a, list_b, ops);
 	else if (algorithm_choice == 0)
 	{
 		if (disorder < 20)
-			ft_selection_sort(list_a, list_b);
+			ft_selection_sort(list_a, list_b, ops);
 		else if (20 <= disorder && disorder <= 50)
-			ft_bucket_sort(list_a, list_b);
+			ft_bucket_sort(list_a, list_b, ops);
 		else
-			ft_radix_sort(list_a, list_b);
-	}	
+			ft_radix_sort(list_a, list_b, ops);
+	}
+}
+
+void	fillstruct(t_operations *ops)
+{
+	ops->pb = 0;
+	ops->rra = 0;
+	ops->rrb = 0;
+	ops->rrr = 0;
+	ops->ra = 0;
+	ops->rb = 0;
+	ops->rr = 0;
+	ops->sa = 0;
+	ops->sb = 0;
+	ops->ss = 0;
+	ops->pa = 0;
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*list_a;
-	t_stack	*list_b;
-	int *use_bench;
-	int algorithm_choice;
-	int disorder;
+	t_stack			*list_a;
+	t_stack			*list_b;
+	int				*use_bench;
+	int				algorithm_choice;
+	int				disorder;
+	t_operations	ops;
 
+	fillstruct(&ops);
 	use_bench = 0;
 	list_a = NULL;
-	list_b = NULL;	
+	list_b = NULL;
 	if (argc < 2)
 	{
 		printf("Uso: %s <numeros>\n", argv[0]);
@@ -95,12 +113,12 @@ int	main(int argc, char **argv)
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
 	disorder = compute_disorder(list_a);
-	ft_call_algorithm(&list_a, &list_b, algorithm_choice, disorder);
+	ft_call_algorithm(&list_a, &list_b, algorithm_choice, disorder, &ops);
 	printf("\nLISTA ORGANIZADA\n\n");
-	while(list_a)
+	while (list_a)
 	{
-		printf("%d ", list_a -> value);
-		list_a = list_a -> next;
+		printf("%d ", list_a->value);
+		list_a = list_a->next;
 	}
 	return (0);
 }

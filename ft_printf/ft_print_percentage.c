@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_print_percentage.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 17:11:31 by armarque         ###   ########.fr       */
+/*   Created: 2026/06/09 15:17:09 by lusampai          #+#    #+#             */
+/*   Updated: 2026/06/17 14:17:02 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_printf.h"
 
-int	ft_isnumber(char *str)
+int	ft_print_percentage(void)
 {
-	int i;
-
-	i = 0;
-	while (str)
-	{
-		if (ft_isdigit(str[i]) == 0)
-			return (0);
-		else
-			return (1);
-		i++;
-	}
-	return (0);
+	ft_putchar_fd('%', 1);
+	return (1);
 }

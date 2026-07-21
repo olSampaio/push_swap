@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 17:11:31 by armarque         ###   ########.fr       */
+/*   Created: 2026/06/02 09:19:54 by lusampai          #+#    #+#             */
+/*   Updated: 2026/06/16 17:28:44 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_printf.h"
 
-int	ft_isnumber(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	size_t	length;
 
-	i = 0;
-	while (str)
-	{
-		if (ft_isdigit(str[i]) == 0)
-			return (0);
-		else
-			return (1);
-		i++;
-	}
-	return (0);
+	length = 0;
+	while (s[length])
+		length++;
+	write(fd, s, length);
 }

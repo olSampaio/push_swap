@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:35:05 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 12:49:04 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:09:11 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-t_stack *ft_get_bigger(t_stack *list_b)
+t_stack	*ft_get_bigger(t_stack *list_b)
 {
-	t_stack *bigger;
-	t_stack *node;
-	
+	t_stack	*bigger;
+	t_stack	*node;
+
 	node = list_b;
 	bigger = node;
-	while(node)
+	while (node)
 	{
-		if(node -> value > bigger -> value)
+		if (node->value > bigger->value)
 			bigger = node;
-		node = node -> next;
+		node = node->next;
 	}
 	return (bigger);
 }
 
-void ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
-	t_stack *better_node)
+void	ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
+		t_stack *better_node, t_operations *ops)
 {
 	if (better_move == 0)
-		while(*list_a != better_node)
-			ra(list_a);	
-	else	
-		while(*list_a != better_node)
-			rra(list_a);
-	pb(list_a, list_b);
+		while (*list_a != better_node)
+			ra(list_a, ops);
+	else
+		while (*list_a != better_node)
+			rra(list_a, ops);
+	pb(list_a, list_b, ops);
 }
 
 int	ft_bucket_count(int size)
 {
-	int	count;
+	int count;
 
 	count = 0;
 	while (count * count < size)

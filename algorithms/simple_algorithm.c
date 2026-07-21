@@ -3,54 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:31:30 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 21:06:09 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:06:15 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_stack *ft_get_smaller(t_stack **list_a)
+static t_stack	*ft_get_smaller(t_stack **list_a)
 {
-	t_stack *smaller;
-	t_stack *node;
-	
+	t_stack	*smaller;
+	t_stack	*node;
+
 	node = *list_a;
 	smaller = node;
-	while(node)
+	while (node)
 	{
-		if(smaller -> value > node -> value)
+		if (smaller->value > node->value)
 			smaller = node;
-		node = node -> next;
+		node = node->next;
 	}
 	return (smaller);
 }
 
-void	ft_selection_sort(t_stack **list_a, t_stack **list_b)
+void	ft_selection_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
-	int	size;
+	int		size;
 	t_stack	*smaller;
 
 	size = ft_lstsize(*list_a);
-	while(*list_a)
-	{		
+	while (*list_a)
+	{
 		smaller = ft_get_smaller(list_a);
 		if (ft_nearest_end(smaller, size) == 1)
 		{
 			while (*list_a != smaller)
-				ra(list_a);
-			pb(list_a, list_b);
+				ra(list_a, ops);
+			pb(list_a, list_b, ops);
 		}
 		else
 		{
 			while (*list_a != smaller)
-				rra(list_a);
-			pb(list_a, list_b);
+				rra(list_a, ops);
+			pb(list_a, list_b, ops);
 		}
 		size--;
 	}
-	while(*list_b)
-		pa(list_a, list_b);
+	while (*list_b)
+		pa(list_a, list_b, ops);
 }

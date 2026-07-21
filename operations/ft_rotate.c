@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:58:32 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/14 19:34:56 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:13:48 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../ft_printf/ft_printf.h"
 
 static void	ft_rotate(t_stack **list)
 {		
@@ -31,18 +32,25 @@ static void	ft_rotate(t_stack **list)
 	(*list) -> prev = NULL;								// O node_b -> prev será NULL, pois ele agora é a cabeça da lista
 }
 
-void	ra(t_stack **list_a)
+void	ra(t_stack **list_a, t_operations *ops)
 {
-	ft_rotate(list_a);	
+	ft_rotate(list_a);
+	ops->ra++;
+	ft_printf("ra\n");
 }
 
-void	rb(t_stack **list_b)
+void	rb(t_stack **list_b, t_operations *ops)
 {	
 	ft_rotate(list_b);
+	ops->rb++;
+	ft_printf("rb\n");
 }
 
-void	rr(t_stack **list_a, t_stack **list_b)
+void	rr(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	ft_rotate(list_a);
 	ft_rotate(list_b);
+	ops->ra++;
+	ops->rb++;
+	ft_printf("rr\n");
 }

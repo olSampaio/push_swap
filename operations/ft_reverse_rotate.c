@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:55:42 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/14 19:35:05 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:13:36 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../ft_printf/ft_printf.h"
 
 static void	ft_reverse_rotate(t_stack **list)
 {
@@ -31,18 +32,25 @@ static void	ft_reverse_rotate(t_stack **list)
 	penultimate -> next = NULL;							// O penultimate -> next será NULL, pois antepenúltimo elemento agora se tornou o último
 }
 
-void	rra(t_stack **list_a)
+void	rra(t_stack **list_a, t_operations *ops)
 {
 	ft_reverse_rotate(list_a);	
+	ops->rra++;
+	ft_printf("rra\n");
 }
 
-void	rrb(t_stack **list_b)
+void	rrb(t_stack **list_b, t_operations *ops)
 {	
 	ft_reverse_rotate(list_b);
+	ops->rrb++;
+	ft_printf("rrb\n");
 }
 
-void	rrr(t_stack **list_a, t_stack **list_b)
+void	rrr(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	ft_reverse_rotate(list_a);
 	ft_reverse_rotate(list_b);
+	ops->rra++;
+	ops->rrb++;
+	ft_printf("rrr\n");
 }

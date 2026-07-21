@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 17:11:31 by armarque         ###   ########.fr       */
+/*   Created: 2026/06/09 14:36:27 by lusampai          #+#    #+#             */
+/*   Updated: 2026/06/17 14:18:25 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_printf.h"
 
-int	ft_isnumber(char *str)
-{
-	int i;
+int	ft_print_d(va_list *parameter)
+{	
+	long	nbr;
+	int		len;
 
-	i = 0;
-	while (str)
+	len = 0;
+	nbr = va_arg(*parameter, int);
+	ft_putnbr_fd(nbr, 1);
+	if (nbr <= 0)
 	{
-		if (ft_isdigit(str[i]) == 0)
-			return (0);
-		else
-			return (1);
-		i++;
+		len++;
+		nbr *= -1;
 	}
-	return (0);
+	while (nbr)
+	{
+		nbr = nbr / 10;
+		len++;
+	}
+	return (len);
 }

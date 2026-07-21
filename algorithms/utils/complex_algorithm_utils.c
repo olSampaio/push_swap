@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   complex_algorithm_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 17:11:31 by armarque         ###   ########.fr       */
+/*   Created: 2026/07/21 10:57:59 by armarque          #+#    #+#             */
+/*   Updated: 2026/07/21 16:26:47 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-int	ft_isnumber(char *str)
+int	get_max(t_stack *list_a)
 {
-	int i;
+	int	max;
 
-	i = 0;
-	while (str)
+	max = 0;
+	while (list_a)
 	{
-		if (ft_isdigit(str[i]) == 0)
-			return (0);
-		else
-			return (1);
-		i++;
+		if (list_a->index > max)
+			max = list_a->index;
+		list_a = list_a->next;
 	}
-	return (0);
+	return (max);
+}
+
+int	count_bits(int max)
+{
+	int	bits;
+
+	bits = 0;
+	while (max != 0)
+	{
+		max = max / 2;
+		bits++;
+	}
+	return (bits);
 }
