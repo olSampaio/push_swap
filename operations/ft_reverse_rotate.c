@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:55:42 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/14 19:35:05 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 10:21:12 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	ft_reverse_rotate(t_stack **list)
 	(*list) = last;										// A cabeça da lista (primeiro elemento) se tornará last, que era o último
 	penultimate -> next = NULL;							// O penultimate -> next será NULL, pois antepenúltimo elemento agora se tornou o último
 }
+
 
 void	rra(t_stack **list_a)
 {
