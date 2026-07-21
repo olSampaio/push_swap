@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 15:35:12 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:33:33 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int compute_disorder(t_stack *list_a)
 {
 	float mistakes;
 	float total_pairs;
+	float rounded_value;
 	int i;
 	int j;
 
@@ -44,6 +45,7 @@ int compute_disorder(t_stack *list_a)
 		}
 		i++;
 	}
-	printf("%d", (int)((mistakes / total_pairs) * 100 + 0.5));
+	rounded_value = (mistakes / total_pairs) * 100.0f + 0.5f;
+	printf("%.2f", rounded_value);
 	return ((int)((mistakes / total_pairs) * 100 + 0.5));
 }

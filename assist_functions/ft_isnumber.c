@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 15:58:04 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:55:17 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int	ft_isnumber(char *str)
 			return (1);
 		i++;
 	}
+	return (0);
 }

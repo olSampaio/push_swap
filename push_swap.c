@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 15:59:03 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:54:58 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ static int verify_flags(char *argv, int *use_bench)
 	return 0;
 }
 
-static void ft_call_algorithm(t_stack **list_a, t_stack **list_b,int algorithm_choice, int disorder)
+static void ft_call_algorithm(t_stack **list_a, t_stack **list_b,int algorithm_choice, float disorder)
 {
 	if (algorithm_choice == 1)
 		ft_selection_sort(list_a, list_b);
 	else if (algorithm_choice == 2)
 		ft_bucket_sort(list_a, list_b);
-	else if (algorithm_choice == 3)
-		ft_radix_sort(list_a, list_b);
+	// else if (algorithm_choice == 3)
+	// 	ft_radix_sort(list_a, list_b);
 	else if (algorithm_choice == 0)
 	{
 		if (disorder < 20)
 			ft_selection_sort(list_a, list_b);
 		else if (20 <= disorder && disorder <= 50)
 			ft_bucket_sort(list_a, list_b);
-		else
-			ft_radix_sort(list_a, list_b);
+		// else
+		// 	ft_radix_sort(list_a, list_b);
 	}	
 }
 
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	t_stack	*list_b;
 	int *use_bench;
 	int algorithm_choice;
-	int disorder;
+	float disorder;
 
 	use_bench = 0;
 	list_a = NULL;

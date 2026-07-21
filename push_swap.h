@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 15:57:42 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:35:05 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_set_index(t_stack *list);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isdigit(int c);
 int		ft_isnumber(char *str);
+char	*ft_itoa(int n);
 
 // ALGORITMOS
 
