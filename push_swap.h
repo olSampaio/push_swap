@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/17 21:03:16 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:49:37 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,22 @@
 # include <unistd.h>
 # include <stdio.h>
 
-// DECLARAÇÃO DO STRUCT
+// DECLARAÇÃO DE STRUCTS
+
+typedef struct s_operations
+{
+	int	pa;
+	int pb;
+	int rra;
+	int rrb;
+	int rrr;
+	int ra;
+	int rb;
+	int rr;
+	int sa;
+	int sb;
+	int ss;
+}	t_operations;
 
 typedef struct s_stack
 {
@@ -26,6 +41,8 @@ typedef struct s_stack
     struct s_stack  *next;
     struct s_stack  *prev;
 }   t_stack;
+
+int compute_disorder(t_stack *list_a);
 
 // FUNÇÕES DE OPERAÇÕES PUSH_SWAP
 
@@ -47,6 +64,10 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast(t_stack *lst);
 int		ft_lstsize(t_stack *lst);
 int		ft_nearest_end(t_stack *node, int size);
+int		ft_atoi(const char *nptr);
+int		ft_search_index(t_stack *list, int node_value);
+void	ft_set_index(t_stack *list);
+int		ft_strcmp(const char *s1, const char *s2);
 
 // ALGORITMOS
 
@@ -55,7 +76,7 @@ void	ft_bucket_sort(t_stack **list_a, t_stack **list_b);
 
 // ALGORITMOS - UTILS
 
-t_stack *ft_get_bigger(t_stack **list_b);
+t_stack *ft_get_bigger(t_stack *list_b);
 void ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
 	t_stack *better_node);
 int	ft_bucket_count(int size);

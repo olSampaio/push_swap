@@ -6,38 +6,11 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/20 09:38:57 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:48:01 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_search_index(t_stack *list, int node_value)
-{
-	int	index;
-
-	index = 0;
-	
-	while(list)
-	{
-		if(list -> value < node_value)
-			index++;
-		list = list -> next;
-	}
-	return (index);
-}
-
-void	ft_set_index(t_stack **list)
-{
-	t_stack *node;
-
-	node = *list;
-	while(node)
-	{
-		node -> index = ft_search_index(*list, node -> value);
-		node = node -> next;
-	}
-}
 
 static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
@@ -57,33 +30,60 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	}
 }
 
-static void	ft_print_list(t_stack *list)
+static int verify_flags(char *argv, int *use_bench)
 {
-	while (list)
+	int i;
+	
+	i = 0;
+	while(argv[i++])
 	{
-		printf("%d\n", list->value);
-		list = list->next;
+		if (ft_strcmp(&argv[i], "--simple"))
+			return 1;
+		else if (ft_strcmp(&argv[i], "--medium"))
+			return 2;
+		else if (ft_strcmp(&argv[i], "--complex"))
+			return 3;
+		else if (ft_strcmp(&argv[i], "--adaptive"))
+			return 0;
+		else if (ft_strcmp(&argv[i], "--bench"))
+			*use_bench = 1;
 	}
+	return 0;
+}
+
+static void ft_call_algorithm(t_stack **list_a, t_stack **list_b,int algorithm_choice)
+{
+	if (algorithm_choice == 1)
+		ft_selection_sort(list_a, list_b);
+	else if (algorithm_choice == 2)
+		ft_bucket_sort(list_a, list_b);
+	else if (algorithm_choice == 3)
+		return ;
+	else if (algorithm_choice == 0)
+	{
+		return ;	
+	}	
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*list_a;
 	t_stack	*list_b;
+	int *use_bench;
+	int algorithm_choice;
 
+	use_bench = 0;
 	list_a = NULL;
-	list_b = NULL;
+	list_b = NULL;	
 	if (argc < 2)
 	{
 		printf("Uso: %s <numeros>\n", argv[0]);
 		return (1);
 	}
+	algorithm_choice = verify_flags(*argv, use_bench);
 	ft_build_list(&list_a, argv, argc);
-	ft_set_index(&list_a);
-	printf("--- ANTES ---\n");
-	ft_print_list(list_a);
-	ft_bucket_sort(&list_a, &list_b);
-	printf("--- DEPOIS ---\n");
-	ft_print_list(list_a);
+	ft_set_index(list_a);
+	compute_disorder(list_a);
+	ft_call_algorithm(&list_a, &list_b, algorithm_choice);
 	return (0);
 }
