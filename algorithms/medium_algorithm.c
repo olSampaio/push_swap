@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/20 09:34:47 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:49:17 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void ft_organize_return(t_stack **list_a, t_stack **list_b)
 
 	while(*list_b)
 	{
-		bigger = ft_get_bigger(list_b);
+		bigger = ft_get_bigger(*list_b);
 		nearest = ft_nearest_end(bigger, ft_lstsize(*list_b));
 		if(nearest == 1)		
 			while(*list_b != bigger)

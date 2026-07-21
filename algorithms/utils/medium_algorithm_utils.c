@@ -6,18 +6,18 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:35:05 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/20 09:33:48 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:49:04 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-t_stack *ft_get_bigger(t_stack **list_b)
+t_stack *ft_get_bigger(t_stack *list_b)
 {
 	t_stack *bigger;
 	t_stack *node;
 	
-	node = *list_b;
+	node = list_b;
 	bigger = node;
 	while(node)
 	{
