@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 12:41:54 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/21 15:35:12 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int compute_disorder(t_stack *list_a)
 		{
 			total_pairs += 1;
 			if(get_value_at(list_a, i) > get_value_at(list_a, j))
-				mistakes += 1;
-			printf("i=%d (%d)  j=%d (%d)\n",
-				i, get_value_at(list_a, i),
-				j, get_value_at(list_a, j));
+				mistakes += 1;			
 			j++;
 		}
 		i++;
