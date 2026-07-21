@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:57:59 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/21 12:53:22 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/21 15:49:49 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,47 +75,3 @@ int	count_bits(int max)
 // 	}
 // 	return (digits);
 // }
-
-int	radix_sort(t_stack *list_a)
-{
-	int		bits;
-	int		num_bits;
-	t_stack	*newstack;
-	t_stack	*stack0;
-
-	num_bits = 0;
-	bits = count_bits(get_max(list_a));
-	while (num_bits != bits)
-	{
-		if ((list_a->index) & 1)
-		{
-			newstack = list_a;
-			newstack = newstack->next;
-		}
-		else
-		{
-			stack0 = list_a;
-			stack0 = stack0->next;
-		}
-		num_bits += 1;
-		list_a->index >> num_bits;
-		list_a = list_a->next;
-		// while ((list_a->index) & 1)
-		// {
-		// 	newstack = list_a;
-		// 	newstack = newstack->next;
-		// 	num_bits += 1;
-		// 	list_a->index >> num_bits;
-		// 	list_a = list_a->next;
-		// }
-		// while ((list_a->index) & 0)
-		// {
-		// 	stack0 = list_a;
-		// 	stack0 = stack0->next;
-		// 	num_bits += 1;
-		// 	list_a->index >> num_bits;
-		// 	list_a = list_a->next;
-		// }
-		// newstack = stack0;
-	}
-}
