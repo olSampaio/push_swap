@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:57:59 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/21 12:49:36 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:53:22 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,35 @@ int	radix_sort(t_stack *list_a)
 	bits = count_bits(get_max(list_a));
 	while (num_bits != bits)
 	{
-		while ((list_a->index) & 1)
+		if ((list_a->index) & 1)
 		{
 			newstack = list_a;
 			newstack = newstack->next;
-			num_bits += 1;
-			list_a->index >> num_bits;
-			list_a = list_a->next;
 		}
-		while ((list_a->index) & 0)
+		else
 		{
 			stack0 = list_a;
 			stack0 = stack0->next;
-			num_bits += 1;
-			list_a->index >> num_bits;
-			list_a = list_a->next;
 		}
-		newstack = stack0;
+		num_bits += 1;
+		list_a->index >> num_bits;
+		list_a = list_a->next;
+		// while ((list_a->index) & 1)
+		// {
+		// 	newstack = list_a;
+		// 	newstack = newstack->next;
+		// 	num_bits += 1;
+		// 	list_a->index >> num_bits;
+		// 	list_a = list_a->next;
+		// }
+		// while ((list_a->index) & 0)
+		// {
+		// 	stack0 = list_a;
+		// 	stack0 = stack0->next;
+		// 	num_bits += 1;
+		// 	list_a->index >> num_bits;
+		// 	list_a = list_a->next;
+		// }
+		// newstack = stack0;
 	}
 }
