@@ -1,29 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 16:45:38 by lusampai         ###   ########.fr       */
+/*   Created: 2026/07/22 17:02:09 by lusampai          #+#    #+#             */
+/*   Updated: 2026/07/22 17:03:28 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-
-int	ft_isnumber(char *str)
-{
-	int i;
-
-	i = 0;
-	if (!str || str[0] == '\0')
-		return (0);
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+void	ft_bench()

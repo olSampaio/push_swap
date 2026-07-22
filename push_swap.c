@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 13:51:21 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:03:46 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ static int	verify_flags(char **argv, int *use_bench)
 
 static void	ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		int algorithm_choice, int disorder, t_operations *ops)
-{
-	ft_printf("ALGORITHM=%d DISORDER=%d\n", algorithm_choice, disorder);
+{	
 	if (algorithm_choice == 1)
 		ft_selection_sort(list_a, list_b, ops);
 	else if (algorithm_choice == 2)
@@ -101,8 +100,7 @@ int	main(int argc, char **argv)
 	int				use_bench;
 	int				algorithm_choice;
 	int				disorder;
-	t_operations	ops;
-	t_stack			*tmp;
+	t_operations	ops;	
 
 	fillstruct(&ops);
 	use_bench = 0;
@@ -116,15 +114,8 @@ int	main(int argc, char **argv)
 	algorithm_choice = verify_flags(argv, &use_bench);
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
-	// disorder = compute_disorder(list_a);
+	disorder = compute_disorder(list_a);
 	disorder = 50;
 	ft_call_algorithm(&list_a, &list_b, algorithm_choice, disorder, &ops);
-	tmp = list_a;
-	while (tmp)
-	{
-		printf("%d ", tmp->value);
-		tmp = tmp->next;
-	}
-	printf("\n");
 	return (0);
 }
