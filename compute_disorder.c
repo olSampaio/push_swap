@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   compute_disorder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 13:25:53 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:26:14 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
 static int	get_value_at(t_stack *list_a, int index)
 {
@@ -26,7 +27,7 @@ int	compute_disorder(t_stack *list_a)
 {
 	float	mistakes;
 	float	total_pairs;
-	float	rounded_value;
+	int		result;
 	int		i;
 	int		j;
 
@@ -45,6 +46,6 @@ int	compute_disorder(t_stack *list_a)
 		}
 		i++;
 	}
-	rounded_value = (mistakes / total_pairs) * 100.0f + 0.5f;
-	return ((int)((mistakes / total_pairs) * 100 + 0.5));
+	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);	
+	return (result);
 }
