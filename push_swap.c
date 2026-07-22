@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 18:44:30 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 19:14:53 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
 	int	algorithm;
-	
+
 	algorithm = 0;
 	i = 1;
 	if (ft_strcmp(argv[1], "--bench") == 0)
 	{
 		*use_bench = 1;
-		i = 2;		
-	}	
+		i = 2;
+	}
 	if (ft_strcmp(argv[i], "--simple") == 0)
 		algorithm = 1;
 	else if (ft_strcmp(argv[i], "--medium") == 0)
@@ -123,10 +123,12 @@ int	main(int argc, char **argv)
 	algorithm_choice = verify_flags(argv, &use_bench);
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
+	if (ft_issorted(list_a))
+		return (ft_exit(&list_a, &list_b));
 	disorder = compute_disorder(list_a);
 	algorithm_name = ft_call_algorithm(&list_a, &list_b, algorithm_choice,
 			disorder / 100, &ops);
 	if (use_bench == 1)
 		ft_bench(algorithm_name, disorder, &ops);
-	return (0);
+	return (ft_exit(&list_a, &list_b));
 }

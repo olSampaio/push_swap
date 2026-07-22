@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 18:45:39 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 19:06:43 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct s_stack
 }					t_stack;
 
 int					compute_disorder(t_stack *list_a);
-void				ft_bench(char *algorithm_name, int disorder, t_operations *ops);
+void				ft_bench(char *algorithm_name, int disorder,
+						t_operations *ops);
 
 // FUNÇÕES DE OPERAÇÕES PUSH_SWAP
 
@@ -76,6 +77,10 @@ char				*ft_itoa(int n);
 int					ft_is_repeated(t_stack *list_a, int value);
 void				ft_lstclear(t_stack **lst);
 void				ft_error(t_stack **list_a);
+int					ft_issorted(t_stack *list_a);
+void				ft_bench(char *algorithm_name, int disorder,
+						t_operations *ops);
+int					ft_exit(t_stack **list_a, t_stack **list_b);
 
 // ALGORITMOS
 
