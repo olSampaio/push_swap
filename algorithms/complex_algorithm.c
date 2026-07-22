@@ -6,10 +6,11 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:11:54 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/21 18:08:09 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:53:52 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
 static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
@@ -25,12 +26,12 @@ static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
 	while (lstsize > i)
 	{
 		if (((*list_a)->index >> num_bits) & 1)
+			ra(list_a, ops);
+		else
 		{
 			pb(list_a, list_b, ops);
 			pbquantity++;
 		}
-		else
-			ra(list_a, ops);
 		i++;
 	}
 	return (pbquantity);

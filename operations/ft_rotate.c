@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:58:32 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:13:48 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 12:37:03 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	rr(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	ft_rotate(list_a);
 	ft_rotate(list_b);
-	ops->ra++;
-	ops->rb++;
+	ops->rr++;
 	ft_printf("rr\n");
 }

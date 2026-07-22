@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:36:51 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:13:28 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:29:47 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_push(t_stack **src, t_stack **dest)
 {
 	t_stack	*top_src;
 
-	if (!*src) // caso o SRC esteja vazio, não faz nada
+	if (!src || !*src) // caso o SRC esteja vazio, não faz nada
 		return ;
 	top_src = *src; // guarda o topo do SRC em um variável
 	*src = top_src->next;
@@ -25,11 +25,17 @@ static void	ft_push(t_stack **src, t_stack **dest)
 	if (*src) // se a cabeça da lista SRC existir,
 		// faça com que não tenha nenhum item antes
 		(*src)->prev = NULL;
-	ft_lstadd_front(dest, top_src); // adiciona o topo da SRC no topo da DEST
+	top_src->next = *dest;
+	if (*dest)
+		(*dest)->prev = top_src;
+	top_src->prev = NULL;
+	*dest = top_src;
 }
 
 void	pa(t_stack **a, t_stack **b, t_operations *ops)
 {
+	if (!b || !*b)
+		return ;
 	ft_push(b, a);
 	ops->pa++;
 	ft_printf("pa\n");
@@ -37,7 +43,8 @@ void	pa(t_stack **a, t_stack **b, t_operations *ops)
 
 void	pb(t_stack **a, t_stack **b, t_operations *ops)
 {
+	if (!a || !*a)
+		return ;
 	ft_push(a, b);
 	ops->pb++;
-	ft_printf("pb\n");
 }

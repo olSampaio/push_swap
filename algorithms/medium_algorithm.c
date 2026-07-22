@@ -6,10 +6,11 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:12:06 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 12:02:25 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
 static void	ft_organize_return(t_stack **list_a, t_stack **list_b,
@@ -61,6 +62,13 @@ static void	ft_bucket_nearest(t_stack *list, int size, int min_index,
 		count_steps++;
 		list = list->next;
 	}
+	ft_printf("bucket [%d,%d] -> ", min_index, max_index);
+	if (*better_node)
+		ft_printf("achou %d (idx %d)\n", (*better_node)->value,
+			(*better_node)->index);
+	else
+		ft_printf("nao achou\n");
+	ft_printf("size=%d bucket=[%d,%d]\n", size, min_index, max_index);
 }
 
 static void	ft_process_bucket(t_stack **list_a, t_stack **list_b, int *size,
@@ -70,6 +78,8 @@ static void	ft_process_bucket(t_stack **list_a, t_stack **list_b, int *size,
 	int		better_move;
 	t_stack	*better_node;
 
+	better_node = NULL;
+	better_move = 0;
 	bucket_atual_size = max_index - min_index;
 	while (bucket_atual_size-- >= 0)
 	{
@@ -88,6 +98,8 @@ void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
 	int	max_index;
 	int	min_index;
 
+	if (!list_a || !*list_a)
+		return ;
 	size = ft_lstsize(*list_a);
 	qt_buckets = ft_bucket_count(size);
 	bucket_size = (size + qt_buckets - 1) / qt_buckets;

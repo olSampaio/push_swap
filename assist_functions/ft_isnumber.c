@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:54:58 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:20:03 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	ft_isnumber(char *str)
 	int i;
 
 	i = 0;
-	while (str)
+	if (!str || str[0] == '\0')
+		return (0);
+	while (str[i])
 	{
-		if (ft_isdigit(str[i]) == 0)
+		if (str[i] < '0' || str[i] > '9')
 			return (0);
-		else
-			return (1);
 		i++;
 	}
-	return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:02:42 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 12:37:36 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	ss(t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	ft_swap(list_a);
 	ft_swap(list_b);
-	ops->sa++;
-	ops->sb++;
+	ops->ss++;
 	ft_printf("ss/n");
 }

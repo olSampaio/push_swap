@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:35:05 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/21 18:09:11 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 11:48:43 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void	ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
 		t_stack *better_node, t_operations *ops)
 {
 	if (better_move == 0)
+	{
+		printf("Topo=%d  Procurando=%d (index=%d)\n", (*list_a)->value,
+			better_node->value, better_node->index);
 		while (*list_a != better_node)
 			ra(list_a, ops);
+	}
 	else
 		while (*list_a != better_node)
 			rra(list_a, ops);
