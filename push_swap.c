@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:36:18 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 18:12:37 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 			new_node->next = NULL;
 			new_node->prev = NULL;
 			ft_lstadd_front(list_a, new_node);
-		}
+		}		
 		i--;
 	}
 }
@@ -41,23 +41,22 @@ static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
 	int	algorithm;
-
-	i = 0;
+	
 	algorithm = 0;
-	while (argv[i])
+	i = 1;
+	if (ft_strcmp(argv[1], "--bench") == 0)
 	{
-		if (ft_strcmp(argv[i], "--simple") == 0)
-			algorithm = 1;
-		else if (ft_strcmp(argv[i], "--medium") == 0)
-			algorithm = 2;
-		else if (ft_strcmp(argv[i], "--complex") == 0)
-			algorithm = 3;
-		else if (ft_strcmp(argv[i], "--adaptive") == 0)
-			algorithm = 0;
-		else if (ft_strcmp(argv[i], "--bench") == 0)
-			*use_bench = 1;
-		i++;
-	}
+		*use_bench = 1;
+		i = 2;		
+	}	
+	if (ft_strcmp(argv[i], "--simple") == 0)
+		algorithm = 1;
+	else if (ft_strcmp(argv[i], "--medium") == 0)
+		algorithm = 2;
+	else if (ft_strcmp(argv[i], "--complex") == 0)
+		algorithm = 3;
+	else if (ft_strcmp(argv[i], "--adaptive") == 0)
+		algorithm = 0;
 	return (algorithm);
 }
 
