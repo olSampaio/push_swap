@@ -6,12 +6,12 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 16:59:15 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/22 17:17:07 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:54:18 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	ft_is_repeated(t_stack *list_a, int value)
 {
@@ -23,4 +23,3 @@ int	ft_is_repeated(t_stack *list_a, int value)
 	}
 	return (0);
 }
-

@@ -6,13 +6,14 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:49:41 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 18:09:55 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -64,7 +65,7 @@ void				ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack				*ft_lstlast(t_stack *lst);
 int					ft_lstsize(t_stack *lst);
 int					ft_nearest_end(t_stack *node, int size);
-int					ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr);
 int					ft_search_index(t_stack *list, int node_value);
 void				ft_set_index(t_stack *list);
 int					ft_strcmp(const char *s1, const char *s2);

@@ -6,19 +6,18 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:47:13 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 18:40:36 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
-#include "ft_printf/ft_printf.h"
 
 static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
 	t_stack	*new_node;
-	int		value;
+	long	value;
 
 	i = argc - 1;
 	while (i >= 1)
@@ -26,10 +25,12 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 		if (ft_isnumber(argv[i]) == 1)
 		{
 			value = ft_atoi(argv[i]);
+			if (value > INT_MAX || value < INT_MIN)
+				ft_error(list_a);
 			if (ft_is_repeated(*list_a, value))
 				return (ft_error(list_a));
 			new_node = malloc(sizeof(t_stack));
-			new_node->value = value;
+			new_node->value = (int)value;
 			new_node->index = 0;
 			new_node->next = NULL;
 			new_node->prev = NULL;
@@ -81,7 +82,7 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		else if (20 <= disorder && disorder <= 50)
 			return (ft_bucket_sort(list_a, list_b, ops), "Adaptive / O(n√n)");
 		else
-			return (ft_radix_sort(list_a, list_b, ops), "Adaptive / O(n log n)");
+			return (ft_radix_sort(list_a, list_b, ops), "Adaptive/ O(n log n)");
 	}
 	return (0);
 }
@@ -102,19 +103,18 @@ void	fillstruct(t_operations *ops)
 }
 
 static void	ft_bench(char *algorithm_name, int disorder, t_operations *ops)
-{	
-	int total_ops;
+{
+	int	total_ops;
 
-	total_ops = (ops->sa + ops->pb + ops->rra +
-		ops->rrb + ops->rrr + ops->ra + ops->rb + ops->rr + ops->sa +
-			ops->sb + ops->ss + ops->pa);
-	ft_printf("[bench] disorder:	%d.%d%%\n", disorder / 100, disorder % 100);	
+	total_ops = (ops->sa + ops->pb + ops->rra + ops->rrb + ops->rrr + ops->ra
+			+ ops->rb + ops->rr + ops->sa + ops->sb + ops->ss + ops->pa);
+	ft_printf("[bench] disorder:	%d.%d%%\n", disorder / 100, disorder % 100);
 	ft_printf("[bench] strategy:	%s\n", algorithm_name);
 	ft_printf("[bench] total_ops:	%d\n", total_ops);
-	ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
-		ops->sa, ops->sb, ops->ss, ops->pa, ops->pb);
-	ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d",
-		ops->ra, ops->rb, ops->rr, ops->rra, ops->rrb, ops->rrr);
+	ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", ops->sa, ops->sb,
+		ops->ss, ops->pa, ops->pb);
+	ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d", ops->ra,
+		ops->rb, ops->rr, ops->rra, ops->rrb, ops->rrr);
 }
 
 int	main(int argc, char **argv)
@@ -140,8 +140,9 @@ int	main(int argc, char **argv)
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
 	disorder = compute_disorder(list_a);
-	algorithm_name = ft_call_algorithm(&list_a, &list_b, algorithm_choice, disorder / 100, &ops);
-	if(use_bench == 1)
+	algorithm_name = ft_call_algorithm(&list_a, &list_b, algorithm_choice,
+			disorder / 100, &ops);
+	if (use_bench == 1)
 		ft_bench(algorithm_name, disorder, &ops);
 	return (0);
 }
