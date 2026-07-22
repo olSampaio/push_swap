@@ -6,11 +6,16 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/07/22 17:04:54 by lusampai         ###   ########.fr       */
+=======
+/*   Updated: 2026/07/22 17:11:07 by lusampai         ###   ########.fr       */
+>>>>>>> bench_rec
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
 static int	get_value_at(t_stack *list_a, int index)
 {
@@ -45,6 +50,6 @@ int	compute_disorder(t_stack *list_a)
 		}
 		i++;
 	}
-	result = (mistakes / total_pairs) * 100.0f + 0.5f;
-	return ((int)((mistakes / total_pairs) * 100 + 0.5));
+	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);	
+	return (result);
 }

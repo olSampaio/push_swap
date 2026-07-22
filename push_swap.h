@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:04:16 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:16:08 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_stack
 }					t_stack;
 
 int					compute_disorder(t_stack *list_a);
-void				ft_bench();
 
 // FUNÇÕES DE OPERAÇÕES PUSH_SWAP
 
