@@ -6,11 +6,12 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 18:33:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 18:34:09 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 18:40:35 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf/ft_printf.h"
 
 void	ft_bench(char *algorithm_name, int disorder, t_operations *ops)
 {	
