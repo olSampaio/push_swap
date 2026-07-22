@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 13:51:21 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:41:20 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,25 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
 	t_stack	*new_node;
-	int		j;
+	int		value;
 
 	i = argc - 1;
 	while (i >= 1)
 	{
-		j = 0;
 		if (ft_isnumber(argv[i]) == 1)
 		{
+			value = ft_atoi(argv[i]);
+			if (ft_is_repeated(*list_a, value))
+				return (ft_error(list_a));
 			new_node = malloc(sizeof(t_stack));
-			new_node->value = atoi(argv[i]);
+			new_node->value = value;
 			new_node->index = 0;
 			new_node->next = NULL;
 			new_node->prev = NULL;
 			ft_lstadd_front(list_a, new_node);
 		}
+		else
+			ft_error(list_a);
 		i--;
 	}
 }
@@ -61,7 +65,6 @@ static int	verify_flags(char **argv, int *use_bench)
 static void	ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		int algorithm_choice, int disorder, t_operations *ops)
 {
-	ft_printf("ALGORITHM=%d DISORDER=%d\n", algorithm_choice, disorder);
 	if (algorithm_choice == 1)
 		ft_selection_sort(list_a, list_b, ops);
 	else if (algorithm_choice == 2)
@@ -116,8 +119,7 @@ int	main(int argc, char **argv)
 	algorithm_choice = verify_flags(argv, &use_bench);
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
-	// disorder = compute_disorder(list_a);
-	disorder = 50;
+	disorder = compute_disorder(list_a);
 	ft_call_algorithm(&list_a, &list_b, algorithm_choice, disorder, &ops);
 	tmp = list_a;
 	while (tmp)

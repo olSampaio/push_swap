@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:36:51 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 13:29:47 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:14:43 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	pb(t_stack **a, t_stack **b, t_operations *ops)
 		return ;
 	ft_push(a, b);
 	ops->pb++;
+	ft_printf("pb\n");
 }
