@@ -6,12 +6,17 @@
 #    By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/22 16:49:26 by lusampai          #+#    #+#              #
-#    Updated: 2026/07/22 16:55:05 by lusampai         ###   ########.fr        #
+#    Updated: 2026/07/22 17:30:05 by lusampai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # RESULTADO FINAL (OUTPUT)
-NAME	= libftprintf.a
+NAME	= push_swap
+
+# PRINTF
+
+FT_PRINTF = ft_printf
+FT_PRINTF_LIB = $(FT_PRINTF)/libftprintf.a
 
 # FERRAMENTAS PARA COMPILAR
 CC		= cc
@@ -32,16 +37,21 @@ RM		= rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(FT_PRINTF_LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(FT_PRINTF_LIB) -o $(NAME)
+
+$(FT_PRINTF_LIB): 
+	$(MAKE) -C $(FT_PRINTF)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	$(MAKE) -C $(FT_PRINTF) clean
 	$(RM) $(OBJS)
 
 fclean: clean
+	$(MAKE) -C $(FT_PRINTF) fclean
 	$(RM) $(NAME)
 
 re: fclean all

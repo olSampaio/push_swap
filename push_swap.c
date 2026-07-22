@@ -6,11 +6,11 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:15:41 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:28:05 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
+#include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
@@ -43,16 +43,17 @@ static int	verify_flags(char **argv, int *use_bench)
 	int	algorithm;
 
 	i = 0;
+	algorithm = -1;
 	while (argv[i])
 	{
 		if (ft_strcmp(argv[i], "--simple") == 0)
-			return (1);
+			algorithm = 1;
 		else if (ft_strcmp(argv[i], "--medium") == 0)
-			return (2);
+			algorithm = 2;
 		else if (ft_strcmp(argv[i], "--complex") == 0)
-			return (3);
+			algorithm = 3;
 		else if (ft_strcmp(argv[i], "--adaptive") == 0)
-			return (0);
+			algorithm = 0;
 		else if (ft_strcmp(argv[i], "--bench") == 0)
 			*use_bench = 1;
 		i++;
