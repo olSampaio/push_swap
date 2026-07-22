@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:28:05 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:36:18 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	verify_flags(char **argv, int *use_bench)
 	int	algorithm;
 
 	i = 0;
-	algorithm = -1;
+	algorithm = 0;
 	while (argv[i])
 	{
 		if (ft_strcmp(argv[i], "--simple") == 0)
