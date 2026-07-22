@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 11:37:19 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 17:11:07 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ int compute_disorder(t_stack *list_a)
 		}
 		i++;
 	}
-	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);
-	// if(result % 100 < 10)
-	// 	ft_printf("%d.0%d%%\n", result / 100, result % 100);
-	// else
-	// 	ft_printf("%d.%d%%\n", result / 100, result % 100);
+	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);	
 	return (result);
 }
