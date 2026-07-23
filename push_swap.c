@@ -6,19 +6,13 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 12:52:48 by lusampai         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 12:30:13 by armarque         ###   ########.fr       */
->>>>>>> 9579c2304b7cf8d885d889aeeb2553ad5ba798a4
+/*   Updated: 2026/07/23 13:13:48 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
-<<<<<<< HEAD
-=======
 static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
@@ -48,7 +42,6 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	}
 }
 
->>>>>>> 9579c2304b7cf8d885d889aeeb2553ad5ba798a4
 static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
@@ -68,7 +61,7 @@ static int	verify_flags(char **argv, int *use_bench)
 	else if (ft_strcmp(argv[i], "--complex") == 0)
 		algorithm = 3;
 	else if (ft_strcmp(argv[i], "--adaptive") == 0)
-		algorithm = 0;
+		algorithm = 4;
 	return (algorithm);
 }
 
@@ -78,6 +71,8 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 	int	sizelist;
 
 	sizelist = ft_lstsize(*list_a);
+	if (algorithm_choice = 4)
+		algorithm_choice = 0;
 	if (algorithm_choice == 1)
 		return (ft_selection_sort(list_a, list_b, ops), "Simple / O(n²)");
 	else if (algorithm_choice == 2)
@@ -96,21 +91,32 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 	return (0);
 }
 
-static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a, t_stack **list_b, t_operations *ops)
+static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a,
+		t_stack **list_b, t_operations *ops)
 {
 	int		algorithm_choice;
 	int		disorder;
 	char	*algorithm_name;
 	int		use_bench;
-	
+	int		offset;
+
+	offset = 1;
 	use_bench = 0;
 	algorithm_choice = verify_flags(arguments, &use_bench);
-	ft_build_list(list_a, arguments, argc);
+	if (algorithm_choice)
+		offset++;
+	if (use_bench)
+		offset++;
+	ft_build_list(list_a, arguments + offset - 1, argc - offset + 1);
 	ft_set_index(*list_a);
+	if (ft_issorted(list_a))
+		return (ft_exit(&list_a, &list_b));
 	disorder = compute_disorder(*list_a);
-	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice, disorder / 100, ops);
-	if(use_bench == 1)
+	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice,
+			disorder / 100, ops);
+	if (use_bench)
 		ft_bench(algorithm_name, disorder, ops);
+	return (ft_exit(&list_a, &list_b));
 }
 
 int	main(int argc, char **argv)
@@ -118,8 +124,8 @@ int	main(int argc, char **argv)
 	t_stack			*list_a;
 	t_stack			*list_b;
 	t_operations	ops;
-	// char			**arguments;
 
+	// char			**arguments;
 	// arguments = ft_split(*argv, ' ');
 	ft_fillstruct_ops(&ops);
 	list_a = NULL;
