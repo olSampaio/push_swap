@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 13:13:48 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:16:53 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	long	value;
 
 	i = argc - 1;
-	while (i >= 1)
+	while (i >= 2)
 	{
 		if (ft_isnumber(argv[i]) == 1)
 		{

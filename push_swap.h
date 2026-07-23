@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:38:51 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:17:21 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -43,7 +44,8 @@ typedef struct s_stack
 }					t_stack;
 
 int					compute_disorder(t_stack *list_a);
-void				ft_bench(char *algorithm_name, int disorder, t_operations *ops);
+void				ft_bench(char *algorithm_name, int disorder,
+						t_operations *ops);
 
 // FUNÇÕES DE OPERAÇÕES PUSH_SWAP
 
@@ -65,15 +67,20 @@ void				ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack				*ft_lstlast(t_stack *lst);
 int					ft_lstsize(t_stack *lst);
 int					ft_nearest_end(t_stack *node, int size);
-int					ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr);
 int					ft_search_index(t_stack *list, int node_value);
 void				ft_set_index(t_stack *list);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_isdigit(int c);
 int					ft_isnumber(char *str);
 char				*ft_itoa(int n);
-void				ft_build_list(t_stack **list_a, char **argv, int argc);
-void				ft_fillstruct_ops(t_operations *ops);
+int					ft_is_repeated(t_stack *list_a, int value);
+void				ft_lstclear(t_stack **lst);
+void				ft_error(t_stack **list_a);
+int					ft_issorted(t_stack *list_a);
+void				ft_bench(char *algorithm_name, int disorder,
+						t_operations *ops);
+int					ft_exit(t_stack **list_a, t_stack **list_b);
 char				**ft_split(char const *s, char c);
 
 // ALGORITMOS
