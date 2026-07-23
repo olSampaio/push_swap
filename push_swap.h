@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 13:20:35 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 18:43:15 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void				ft_bench(char *algorithm_name, int disorder,
 int					ft_exit(t_stack **list_a, t_stack **list_b);
 char				**ft_split(char const *s, char c);
 void				ft_fillstruct_ops(t_operations *ops);
+char				**ft_prepare_numbers(char **argv, int argc, int offset,
+						int *count);
+int					see_size(char **argv);
 
 // ALGORITMOS
 
@@ -92,6 +95,9 @@ void				ft_bucket_sort(t_stack **list_a, t_stack **list_b,
 						t_operations *ops);
 void				ft_radix_sort(t_stack **list_a, t_stack **list_b,
 						t_operations *ops);
+void				ft_sort_two(t_stack **list_a, t_operations *ops);
+
+void				ft_sort_three(t_stack **list_a, t_operations *ops);
 
 // ALGORITMOS - UTILS
 

@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 12:37:36 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 18:45:32 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	sa(t_stack **list_a, t_operations *ops)
 {
 	ft_swap(list_a);	
 	ops->sa++;
-	ft_printf("sa/n");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack **list_b, t_operations *ops)
 {	
 	ft_swap(list_b);
 	ops->sb++;
-	ft_printf("sb/n");
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack **list_a, t_stack **list_b, t_operations *ops)
@@ -54,5 +54,5 @@ void	ss(t_stack **list_a, t_stack **list_b, t_operations *ops)
 	ft_swap(list_a);
 	ft_swap(list_b);
 	ops->ss++;
-	ft_printf("ss/n");
+	ft_printf("ss\n");
 }
