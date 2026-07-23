@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 13:17:21 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:20:35 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void				ft_bench(char *algorithm_name, int disorder,
 						t_operations *ops);
 int					ft_exit(t_stack **list_a, t_stack **list_b);
 char				**ft_split(char const *s, char c);
+void				ft_fillstruct_ops(t_operations *ops);
 
 // ALGORITMOS
 

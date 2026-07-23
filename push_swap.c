@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 13:16:53 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:29:03 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 	int	sizelist;
 
 	sizelist = ft_lstsize(*list_a);
-	if (algorithm_choice = 4)
+	if (algorithm_choice == 4)
 		algorithm_choice = 0;
 	if (algorithm_choice == 1)
 		return (ft_selection_sort(list_a, list_b, ops), "Simple / O(n²)");
@@ -109,14 +109,13 @@ static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a,
 		offset++;
 	ft_build_list(list_a, arguments + offset - 1, argc - offset + 1);
 	ft_set_index(*list_a);
-	if (ft_issorted(list_a))
-		return (ft_exit(&list_a, &list_b));
+	if (ft_issorted(*list_a))
+		return ;
 	disorder = compute_disorder(*list_a);
 	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice,
 			disorder / 100, ops);
 	if (use_bench)
 		ft_bench(algorithm_name, disorder, ops);
-	return (ft_exit(&list_a, &list_b));
 }
 
 int	main(int argc, char **argv)
@@ -136,5 +135,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_call_functions_main(argc, argv, &list_a, &list_b, &ops);
+	ft_exit(&list_a, &list_b);
 	return (0);
 }
