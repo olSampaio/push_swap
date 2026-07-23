@@ -6,11 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 12:17:18 by armarque         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 12:30:13 by armarque         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2026/07/23 12:45:26 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +20,7 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	long	value;
 
 	i = argc - 1;
-	while (i >= 1)
+	while (i >= 2)
 	{
 		if (ft_isnumber(argv[i]) == 1)
 		{
@@ -83,15 +79,9 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		return (ft_radix_sort(list_a, list_b, ops), "Complex / O(n log n)");
 	else if (algorithm_choice == 0)
 	{
-<<<<<<< HEAD
-		if (disorder < 20 && sizelist <= 3)
-			return (ft_selection_sort(list_a, list_b, ops), "Adaptive / O(n²)");
-		else if (20 <= disorder && disorder <= 50 && sizelist <= 5)
-=======
 		if ((sizelist <= 3) || (disorder < 20))
 			return (ft_selection_sort(list_a, list_b, ops), "Adaptive / O(n²)");
 		else if ((sizelist <= 5) || (20 <= disorder && disorder <= 50))
->>>>>>> main
 			return (ft_bucket_sort(list_a, list_b, ops), "Adaptive / O(n√n)");
 		else
 			return (ft_radix_sort(list_a, list_b, ops), "Adaptive/ O(n log n)");
