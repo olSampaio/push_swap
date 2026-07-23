@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+         #
+#    By: armarque <armarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/22 16:49:26 by lusampai          #+#    #+#              #
-#    Updated: 2026/07/23 12:42:06 by lusampai         ###   ########.fr        #
+#    Updated: 2026/07/23 13:23:43 by armarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS	= push_swap.c compute_disorder.c algorithms/simple_algorithm.c algorithms/m
 	operations/ft_reverse_rotate.c operations/ft_swap.c assist_functions/ft_atoi.c assist_functions/ft_isdigit.c assist_functions/ft_isnumber.c \
 	assist_functions/ft_itoa.c assist_functions/ft_lstadd_front.c assist_functions/ft_lstlast.c assist_functions/ft_lstsize.c \
 	assist_functions/ft_nearest_end.c assist_functions/ft_search_index.c assist_functions/ft_set_index.c assist_functions/ft_strcmp.c \
-	ft_bench.c assist_functions/ft_fillstruct_ops.c assist_functions/ft_build_list.c assist_functions/ft_split.c
+	assist_functions/ft_error.c assist_functions/ft_lstclear.c assist_functions/ft_isrepeated.c assist_functions/ft_issorted.c assist_functions/ft_exit.c \
+	assist_functions/ft_split.c assist_functions/ft_fillstruct_ops.c
 
 # OBJETOS GERADOS A PARTIR DOS ARQUIVOS FONTE
 OBJS	= $(SRCS:.c=.o)

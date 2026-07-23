@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:37:02 by armarque         ###   ########.fr       */
+/*   Created: 2026/07/22 17:18:21 by armarque          #+#    #+#             */
+/*   Updated: 2026/07/22 17:21:17 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_isnumber(char *str)
+void	ft_lstclear(t_stack **lst)
 {
-	int i;
+	t_stack *next;
 
-	i = 0;
-	if (!str || str[0] == '\0')
-		return (0);
-	if (str[i] == '-')
-		i++;
-	while (str[i])
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
+		next = (*lst)->next;
+		free(*lst);
+		*lst = next;
 	}
-	return (1);
 }
