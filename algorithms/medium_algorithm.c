@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:39:27 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 17:38:27 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ static void	ft_bucket_nearest(t_stack *list, int size, int min_index,
 	{
 		if (list->index >= min_index && list->index <= max_index)
 		{
-			dist = count_steps;
-			// dist recebe a distância até o começo
-			if (size - count_steps < dist)
-				// se a distância até o final for menor que a distância até o começo,
-				// dist recebe a distância até o final
+			dist = count_steps;			
+			if (size - count_steps < dist)				
 				dist = size - count_steps;
 			if (best_dist == -1 || dist < best_dist)
 			{

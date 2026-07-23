@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/07/23 19:02:55 by armarque         ###   ########.fr       */
+=======
+/*   Updated: 2026/07/23 18:56:20 by lusampai         ###   ########.fr       */
+>>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
+<<<<<<< HEAD
 static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
@@ -45,6 +50,8 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	}
 }
 
+=======
+>>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
 static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
