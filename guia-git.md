@@ -87,11 +87,7 @@ Sempre rodem `git pull` antes de começar a mexer no código, para evitar trabal
 Quando o Git não consegue juntar automaticamente duas mudanças na mesma linha, ele marca o conflito no arquivo assim:
 
 ```
-<<<<<<< HEAD
 seu código
-=======
-código da outra pessoa
->>>>>>> nome-da-branch
 ```
 
 Vocês decidem juntos qual versão (ou combinação) manter, apagam essas marcações, e fazem um novo commit.
