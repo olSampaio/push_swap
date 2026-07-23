@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:22:37 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 12:38:51 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int					ft_isnumber(char *str);
 char				*ft_itoa(int n);
 void				ft_build_list(t_stack **list_a, char **argv, int argc);
 void				ft_fillstruct_ops(t_operations *ops);
+char				**ft_split(char const *s, char c);
 
 // ALGORITMOS
 

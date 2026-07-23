@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:29:16 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 12:49:33 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 	return (0);
 }
 
-static void	ft_call_functions_main(int argc, char **argv, t_stack **list_a, t_stack **list_b, t_operations *ops)
+static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a, t_stack **list_b, t_operations *ops)
 {
 	int		algorithm_choice;
 	int		disorder;
@@ -66,8 +66,8 @@ static void	ft_call_functions_main(int argc, char **argv, t_stack **list_a, t_st
 	int		use_bench;
 	
 	use_bench = 0;
-	algorithm_choice = verify_flags(argv, &use_bench);
-	ft_build_list(list_a, argv, argc);
+	algorithm_choice = verify_flags(arguments, &use_bench);
+	ft_build_list(list_a, arguments, argc);
 	ft_set_index(*list_a);
 	disorder = compute_disorder(*list_a);
 	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice, disorder / 100, ops);
@@ -80,7 +80,9 @@ int	main(int argc, char **argv)
 	t_stack			*list_a;
 	t_stack			*list_b;
 	t_operations	ops;
+	// char			**arguments;
 
+	// arguments = ft_split(*argv, ' ');
 	ft_fillstruct_ops(&ops);
 	list_a = NULL;
 	list_b = NULL;
