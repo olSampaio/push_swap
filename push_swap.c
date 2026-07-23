@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 18:34:46 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 12:14:52 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	verify_flags(char **argv, int *use_bench)
 
 static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		int algorithm_choice, int disorder, t_operations *ops)
-{	
+{		
 	if (algorithm_choice == 1)
 		return (ft_selection_sort(list_a, list_b, ops), "Simple / O(n²)");
 	else if (algorithm_choice == 2)
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 		printf("Uso: %s <numeros>\n", argv[0]);
 		return (1);
 	}
-	algorithm_choice = verify_flags(argv, &use_bench);
+	algorithm_choice = verify_flags(argv, &use_bench);	
 	ft_build_list(&list_a, argv, argc);
 	ft_set_index(list_a);
 	disorder = compute_disorder(list_a);

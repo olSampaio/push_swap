@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 15:57:53 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 16:45:38 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/22 19:05:00 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_isnumber(char *str)
 	i = 0;
 	if (!str || str[0] == '\0')
 		return (0);
+	if (str[i] == '-')
+		i++;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
