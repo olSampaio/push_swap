@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:29:58 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 19:29:44 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 12:37:16 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	compute_disorder(t_stack *list_a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	i = 0;
+	i = 0;	
 	while (i < (ft_lstsize(list_a) - 1))
 	{
 		j = i + 1;
@@ -45,7 +45,7 @@ int	compute_disorder(t_stack *list_a)
 			j++;
 		}
 		i++;
-	}
-	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);	
+	}	
+	result = (int)(mistakes / total_pairs * 10000.0f + 0.5f);		
 	return (result);
 }
