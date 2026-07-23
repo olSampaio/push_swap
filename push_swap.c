@@ -3,52 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 12:52:48 by lusampai         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 12:30:13 by armarque         ###   ########.fr       */
->>>>>>> 9579c2304b7cf8d885d889aeeb2553ad5ba798a4
+/*   Updated: 2026/07/23 13:08:12 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
-<<<<<<< HEAD
-=======
-static void	ft_build_list(t_stack **list_a, char **argv, int argc)
-{
-	int		i;
-	t_stack	*new_node;
-	long	value;
-
-	i = argc - 1;
-	while (i >= 1)
-	{
-		if (ft_isnumber(argv[i]) == 1)
-		{
-			value = ft_atoi(argv[i]);
-			if (value > INT_MAX || value < INT_MIN)
-				ft_error(list_a);
-			if (ft_is_repeated(*list_a, value))
-				return (ft_error(list_a));
-			new_node = malloc(sizeof(t_stack));
-			new_node->value = (int)value;
-			new_node->index = 0;
-			new_node->next = NULL;
-			new_node->prev = NULL;
-			ft_lstadd_front(list_a, new_node);
-		}
-		else
-			ft_error(list_a);
-		i--;
-	}
-}
-
->>>>>>> 9579c2304b7cf8d885d889aeeb2553ad5ba798a4
 static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
@@ -118,9 +82,8 @@ int	main(int argc, char **argv)
 	t_stack			*list_a;
 	t_stack			*list_b;
 	t_operations	ops;
-	// char			**arguments;
+	char			**arguments;
 
-	// arguments = ft_split(*argv, ' ');
 	ft_fillstruct_ops(&ops);
 	list_a = NULL;
 	list_b = NULL;
