@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 13:29:03 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:50:45 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	long	value;
 
 	i = argc - 1;
-	while (i >= 2)
+	while (i >= 1)
 	{
 		if (ft_isnumber(argv[i]) == 1)
 		{
@@ -28,7 +28,10 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 			if (value > INT_MAX || value < INT_MIN)
 				ft_error(list_a);
 			if (ft_is_repeated(*list_a, value))
-				return (ft_error(list_a));
+			{
+				ft_error(list_a);
+				return ;
+			}
 			new_node = malloc(sizeof(t_stack));
 			new_node->value = (int)value;
 			new_node->index = 0;
