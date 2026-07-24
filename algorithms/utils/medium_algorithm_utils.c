@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 19:35:05 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:21:38 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:39:25 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,22 @@ t_stack	*ft_get_bigger(t_stack *list_b)
 	return (bigger);
 }
 
-void	ft_move_best(t_stack **list_a, t_stack **list_b, int better_move,
-		t_stack *better_node, t_operations *ops, int use_bench)
+void	ft_move_best(t_sort_data *data, t_bucket_best *best)
 {
-	if (better_move == 0)
-	{					
-		while (*list_a != better_node)
-			ra(list_a, ops, use_bench);
+	if (best->better_move == 0)
+	{
+		while (*data->list_a != best->better_node)
+			ra(data->list_a, data->ops, data->use_bench);
 	}
 	else
-		while (*list_a != better_node)
-			rra(list_a, ops, use_bench);
-	pb(list_a, list_b, ops, use_bench);
+		while (*data->list_a != best->better_node)
+			rra(data->list_a, data->ops, data->use_bench);
+	pb(data->list_a, data->list_b, data->ops, data->use_bench);
 }
 
 int	ft_bucket_count(int size)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (count * count < size)

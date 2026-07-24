@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:26:11 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 22:28:19 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:46:43 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ t_stack	*ft_get_smaller_index(t_stack **list_a)
 	return (smaller);
 }
 
-void	ft_sort_five(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
+void	ft_sort_five(t_stack **list_a, t_stack **list_b, t_operations *ops,
+		int use_bench)
 {
 	t_stack	*smaller;
 

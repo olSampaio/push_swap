@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 16:30:01 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 17:16:05 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:57:08 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	see_size(char **argv)
 
 char	**ft_prepare_numbers(char **argv, int argc, int offset, int *count)
 {
-	char **newnums;
+	char	**newnums;
 
 	if (argc - offset == 1)
 	{

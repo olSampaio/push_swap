@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 13:31:30 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:28:16 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:46:52 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static t_stack	*ft_get_smaller(t_stack **list_a)
 	return (smaller);
 }
 
-void	ft_selection_sort(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
+void	ft_selection_sort(t_stack **list_a, t_stack **list_b, t_operations *ops,
+		int use_bench)
 {
 	int		size;
 	t_stack	*smaller;

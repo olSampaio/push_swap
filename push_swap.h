@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:28:06 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:33:33 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,37 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
+typedef struct s_flags
+{
+	int				algorithm_choice;
+	int				use_bench;
+	int				offset;
+	int				newargc;
+}					t_flags;
+
+typedef struct s_sort_data
+{
+	t_stack			**list_a;
+	t_stack			**list_b;
+	t_operations	*ops;
+	char			**argv;
+	int				algorithm_choice;
+	int				disorder;
+	int				use_bench;
+}					t_sort_data;
+
+typedef struct s_bucket_range
+{
+	int				min_index;
+	int				max_index;
+}					t_bucket_range;
+
+typedef struct s_bucket_best
+{
+	int				better_move;
+	t_stack			*better_node;
+}					t_bucket_best;
+
 int					compute_disorder(t_stack *list_a);
 void				ft_bench(char *algorithm_name, int disorder,
 						t_operations *ops);
@@ -51,15 +82,20 @@ void				ft_bench(char *algorithm_name, int disorder,
 
 void				sa(t_stack **list_a, t_operations *ops, int use_bench);
 void				sb(t_stack **list_b, t_operations *ops, int use_bench);
-void				ss(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench);
-void				pa(t_stack **a, t_stack **b, t_operations *ops, int use_bench);
-void				pb(t_stack **a, t_stack **b, t_operations *ops, int use_bench);
+void				ss(t_stack **list_a, t_stack **list_b, t_operations *ops,
+						int use_bench);
+void				pa(t_stack **a, t_stack **b, t_operations *ops,
+						int use_bench);
+void				pb(t_stack **a, t_stack **b, t_operations *ops,
+						int use_bench);
 void				ra(t_stack **list_a, t_operations *ops, int use_bench);
 void				rb(t_stack **list_b, t_operations *ops, int use_bench);
-void				rr(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench);
+void				rr(t_stack **list_a, t_stack **list_b, t_operations *ops,
+						int use_bench);
 void				rra(t_stack **list_a, t_operations *ops, int use_bench);
 void				rrb(t_stack **list_b, t_operations *ops, int use_bench);
-void				rrr(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench);
+void				rrr(t_stack **list_a, t_stack **list_b, t_operations *ops,
+						int use_bench);
 
 // FUNÇÕES AUXILIARES
 
@@ -98,18 +134,19 @@ void				ft_bucket_sort(t_stack **list_a, t_stack **list_b,
 						t_operations *ops, int use_bench);
 void				ft_radix_sort(t_stack **list_a, t_stack **list_b,
 						t_operations *ops, int use_bench);
-void				ft_sort_two(t_stack **list_a, t_operations *ops, int use_bench);
+void				ft_sort_two(t_stack **list_a, t_operations *ops,
+						int use_bench);
 
-void				ft_sort_three(t_stack **list_a, t_operations *ops, int use_bench);
+void				ft_sort_three(t_stack **list_a, t_operations *ops,
+						int use_bench);
 void				ft_sort_five(t_stack **list_a, t_stack **list_b,
 						t_operations *ops, int use_bench);
+char				*ft_adaptive_sort(t_sort_data *data);
 
 // ALGORITMOS - UTILS
 
 t_stack				*ft_get_bigger(t_stack *list_b);
-void				ft_move_best(t_stack **list_a, t_stack **list_b,
-						int better_move, t_stack *better_node,
-						t_operations *ops, int use_bench);
+void				ft_move_best(t_sort_data *data, t_bucket_best *best);
 int					ft_bucket_count(int size);
 int					count_bits(int max);
 int					get_max(t_stack *list_a);

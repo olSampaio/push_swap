@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:21:06 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:55:47 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	ft_organize_return(t_stack **list_a, t_stack **list_b,
 	}
 }
 
-static void	ft_bucket_nearest(t_stack *list, int size, int min_index,
-		int max_index, int *better_move, t_stack **better_node)
+static void	ft_bucket_nearest(t_stack *list, int size, t_bucket_range range,
+		t_bucket_best *best)
 {
 	int	best_dist;
 	int	dist;
@@ -44,65 +44,73 @@ static void	ft_bucket_nearest(t_stack *list, int size, int min_index,
 	best_dist = -1;
 	while (list)
 	{
-		if (list->index >= min_index && list->index <= max_index)
+		if (list->index >= range.min_index && list->index <= range.max_index)
 		{
-			dist = count_steps;			
-			if (size - count_steps < dist)				
+			dist = count_steps;
+			if (size - count_steps < dist)
 				dist = size - count_steps;
 			if (best_dist == -1 || dist < best_dist)
 			{
 				best_dist = dist;
-				*better_node = list;
-				*better_move = (count_steps > size - count_steps);
+				best->better_node = list;
+				best->better_move = (count_steps > size - count_steps);
 			}
 		}
 		count_steps++;
 		list = list->next;
-	}		
+	}
 }
 
-static void	ft_process_bucket(t_stack **list_a, t_stack **list_b, int *size,
-		int min_index, int max_index, t_operations *ops, int use_bench)
+static void	ft_process_bucket(t_sort_data *data, int *size,
+		t_bucket_range range)
 {
-	int		bucket_atual_size;
-	int		better_move;
-	t_stack	*better_node;
+	int				bucket_atual_size;
+	t_bucket_best	best;
 
-	better_node = NULL;
-	better_move = 0;
-	bucket_atual_size = max_index - min_index;
+	bucket_atual_size = range.max_index - range.min_index;
 	while (bucket_atual_size-- >= 0)
 	{
-		ft_bucket_nearest(*list_a, *size, min_index, max_index, &better_move,
-			&better_node);
-		ft_move_best(list_a, list_b, better_move, better_node, ops, use_bench);
+		ft_bucket_nearest(*data->list_a, *size, range, &best);
+		ft_move_best(data, &best);
 		(*size)--;
 	}
 }
 
-void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops,
-	int use_bench)
+static void	ft_bucket_init(t_sort_data *data, t_bucket_range *range,
+		int *qt_buckets, int *bucket_size)
 {
 	int	size;
-	int	qt_buckets;
-	int	bucket_size;
-	int	max_index;
-	int	min_index;
+
+	size = ft_lstsize(*data->list_a);
+	*qt_buckets = ft_bucket_count(size);
+	*bucket_size = (size + *qt_buckets - 1) / *qt_buckets;
+	range->max_index = size - 1;
+}
+
+void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops,
+		int use_bench)
+{
+	t_sort_data		data;
+	t_bucket_range	range;
+	int				qt_buckets;
+	int				bucket_size;
+	int				size;
 
 	if (!list_a || !*list_a)
 		return ;
-	size = ft_lstsize(*list_a);
-	qt_buckets = ft_bucket_count(size);
-	bucket_size = (size + qt_buckets - 1) / qt_buckets;
-	max_index = size - 1;
+	data.list_a = list_a;
+	data.list_b = list_b;
+	data.ops = ops;
+	data.use_bench = use_bench;
+	ft_bucket_init(&data, &range, &qt_buckets, &bucket_size);
 	while (--qt_buckets >= 0)
 	{
 		size = ft_lstsize(*list_a);
-		min_index = max_index - (bucket_size - 1);
-		if (min_index < 0)
-			min_index = 0;
-		ft_process_bucket(list_a, list_b, &size, min_index, max_index, ops, use_bench);
-		max_index = max_index - bucket_size;
+		range.min_index = range.max_index - (bucket_size - 1);
+		if (range.min_index < 0)
+			range.min_index = 0;
+		ft_process_bucket(&data, &size, range);
+		range.max_index = range.max_index - bucket_size;
 	}
 	ft_organize_return(list_a, list_b, ops, use_bench);
 }

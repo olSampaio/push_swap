@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   complex_algorithm.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:11:54 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 22:18:29 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:39:45 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
-static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
-		t_operations *ops, int use_bench)
+static int	dopbra(t_sort_data *data, int num_bits)
 {
 	int	i;
 	int	lstsize;
@@ -22,14 +21,14 @@ static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
 
 	pbquantity = 0;
 	i = 0;
-	lstsize = ft_lstsize(*list_a);
+	lstsize = ft_lstsize(*data->list_a);
 	while (lstsize > i)
 	{
-		if (((*list_a)->index >> num_bits) & 1)
-			ra(list_a, ops, use_bench);
+		if (((*data->list_a)->index >> num_bits) & 1)
+			ra(data->list_a, data->ops, data->use_bench);
 		else
 		{
-			pb(list_a, list_b, ops, use_bench);
+			pb(data->list_a, data->list_b, data->ops, data->use_bench);
 			pbquantity++;
 		}
 		i++;
@@ -37,19 +36,25 @@ static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
 	return (pbquantity);
 }
 
-void	ft_radix_sort(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
+void	ft_radix_sort(t_stack **list_a, t_stack **list_b, t_operations *ops,
+		int use_bench)
 {
-	int	num_bits;
-	int	bits;
-	int	i;
-	int	pbquantity;
+	t_sort_data	data;
+	int			num_bits;
+	int			bits;
+	int			i;
+	int			pbquantity;
 
+	data.list_a = list_a;
+	data.list_b = list_b;
+	data.ops = ops;
+	data.use_bench = use_bench;
 	num_bits = 0;
 	bits = count_bits(get_max(*list_a));
 	while (num_bits != bits)
 	{
 		i = 0;
-		pbquantity = (dopbra(list_a, list_b, num_bits, ops, use_bench));
+		pbquantity = (dopbra(&data, num_bits));
 		while (i < pbquantity)
 		{
 			pa(list_a, list_b, ops, use_bench);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:07:15 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:15:27 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:56:07 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_set_index(t_stack *list)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	node = list;
-	while(node)
+	while (node)
 	{
-		node -> index = ft_search_index(list, node -> value);
-		node = node -> next;
+		node->index = ft_search_index(list, node->value);
+		node = node->next;
 	}
 }

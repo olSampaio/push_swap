@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:18:21 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/22 17:21:17 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:56:59 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_stack **lst)
 {
-	t_stack *next;
+	t_stack	*next;
 
 	if (!lst || !*lst)
 		return ;

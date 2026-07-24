@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nearest_top.c                                   :+:      :+:    :+:   */
+/*   ft_adaptive_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/23 21:31:12 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 23:57:14 by armarque         ###   ########.fr       */
+/*   Created: 2026/07/23 23:15:58 by armarque          #+#    #+#             */
+/*   Updated: 2026/07/23 23:44:31 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
-int	ft_nearest_top(t_stack *list, t_stack *node, int size)
+char	*ft_adaptive_sort(t_sort_data *data)
 {
-	int	pos;
-
-	pos = 0;
-	while (list != node)
-	{
-		pos++;
-		list = list->next;
-	}
-	if (pos <= size / 2)
-		return (1);
-	return (0);
+	if (data->disorder < 20)
+		return (ft_selection_sort(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Adaptive O(n²)");
+	if (data->disorder <= 50)
+		return (ft_bucket_sort(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Adaptive O(n√n)");
+	return (ft_radix_sort(data->list_a, data->list_b, data->ops,
+			data->use_bench), "Adaptive O(n log n)");
 }

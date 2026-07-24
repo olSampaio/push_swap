@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 12:22:39 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 12:36:51 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:56:29 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_words(char const *s, char c)
 }
 
 static int	count_len(char const *s, char c, int idx)
-{		
+{
 	int	len;
 
 	len = 0;
@@ -43,12 +43,12 @@ static int	count_len(char const *s, char c, int idx)
 
 static char	*copy_word(char const *s, char c, int idx)
 {
-	char	*str;	
-	int	len;
-	int	i;
+	char	*str;
+	int		len;
+	int		i;
 
 	len = count_len(s, c, idx);
-	str = malloc ((len + 1) * sizeof(char));
+	str = malloc((len + 1) * sizeof(char));
 	i = 0;
 	if (!str)
 		return (NULL);
@@ -70,8 +70,8 @@ static void	ft_free_split(char **splitted_str, int str_idx)
 
 char	**ft_split(char const *s, char c)
 {
-	int	idx;	
-	int	str_idx;	
+	int		idx;
+	int		str_idx;
 	char	**splitted_str;
 
 	idx = 0;

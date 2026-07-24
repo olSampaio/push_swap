@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:36:51 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:11:54 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:54:40 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static void	ft_push(t_stack **src, t_stack **dest)
 {
 	t_stack	*top_src;
 
-	if (!src || !*src) // caso o SRC esteja vazio, não faz nada
+	if (!src || !*src)
 		return ;
-	top_src = *src; // guarda o topo do SRC em um variável
+	top_src = *src;
 	*src = top_src->next;
-	// define o próximo nó da lista SRC como a cabeça da lista
-	if (*src) // se a cabeça da lista SRC existir,
-		// faça com que não tenha nenhum item antes
+	if (*src)
 		(*src)->prev = NULL;
 	top_src->next = *dest;
 	if (*dest)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:26:19 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 23:51:11 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,65 +36,63 @@ static int	verify_flags(char **argv, int *use_bench)
 	return (algorithm);
 }
 
-static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
-		int algorithm_choice, int disorder, t_operations *ops, int use_bench)
+static char	*call_sort(t_sort_data *data, int sizelist)
 {
-	int	sizelist;
-
-	sizelist = ft_lstsize(*list_a);
 	if (sizelist == 2)
-		return (ft_sort_two(list_a, ops, use_bench), "Two elements / O(1)");
+		return (ft_sort_two(data->list_a, data->ops, data->use_bench),
+			"Two elements / O(1)");
 	else if (sizelist == 3)
-		return (ft_sort_three(list_a, ops, use_bench), "Three elements / O(1)");
+		return (ft_sort_three(data->list_a, data->ops, data->use_bench),
+			"Three elements / O(1)");
 	else if (sizelist == 5)
-		return (ft_sort_five(list_a, list_b, ops, use_bench), "Five elements / O(1)");
-	if (algorithm_choice == 4)
-		algorithm_choice = 0;
-	if (algorithm_choice == 1)
-		return (ft_selection_sort(list_a, list_b, ops, use_bench), "Simple / O(n²)");
-	else if (algorithm_choice == 2)
-		return (ft_bucket_sort(list_a, list_b, ops, use_bench), "Medium / O(n√n)");
-	else if (algorithm_choice == 3)
-		return (ft_radix_sort(list_a, list_b, ops, use_bench), "Complex / O(n log n)");
-	else if (algorithm_choice == 0)
-	{
-		if (disorder < 20)
-			return (ft_selection_sort(list_a, list_b, ops, use_bench), "Adaptive / O(n²)");
-		else if (20 <= disorder && disorder <= 50)
-			return (ft_bucket_sort(list_a, list_b, ops, use_bench), "Adaptive / O(n√n)");
-		else
-			return (ft_radix_sort(list_a, list_b, ops, use_bench), "Adaptive/ O(n log n)");
-	}
-	return (0);
+		return (ft_sort_five(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Five elements / O(1)");
+	return (NULL);
 }
 
-static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a,
-		t_stack **list_b, t_operations *ops)
+static char	*ft_call_algorithm(t_sort_data *data)
 {
-	int		algorithm_choice;
-	int		disorder;
-	char	*algorithm_name;
-	int		use_bench;
-	int		offset;
-	int		newargc;
+	int	size;
+
+	size = ft_lstsize(*data->list_a);
+	if (size == 2 || size == 3 || size == 5)
+		return (call_sort(data, size));
+	if (data->algorithm_choice == 4)
+		data->algorithm_choice = 0;
+	if (data->algorithm_choice == 1)
+		return (ft_selection_sort(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Simple O(n²)");
+	if (data->algorithm_choice == 2)
+		return (ft_bucket_sort(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Medium O(n√n)");
+	if (data->algorithm_choice == 3)
+		return (ft_radix_sort(data->list_a, data->list_b, data->ops,
+				data->use_bench), "Complex O(n log n)");
+	return (ft_adaptive_sort(data));
+}
+
+static void	ft_call_functions_main(t_sort_data *data, int argc)
+{
+	int	offset;
+	int	newargc;
 
 	offset = 1;
-	use_bench = 0;
-	algorithm_choice = verify_flags(arguments, &use_bench);
-	if (algorithm_choice)
+	data->use_bench = 0;
+	data->algorithm_choice = verify_flags(data->argv, &data->use_bench);
+	if (data->algorithm_choice)
 		offset++;
-	if (use_bench)
+	if (data->use_bench)
 		offset++;
-	arguments = ft_prepare_numbers(arguments, argc, offset, &newargc);
-	ft_build_list(list_a, arguments, newargc);
-	ft_set_index(*list_a);
-	if (ft_issorted(*list_a))
+	data->argv = ft_prepare_numbers(data->argv, argc, offset, &newargc);
+	ft_build_list(data->list_a, data->argv, newargc);
+	ft_set_index(*data->list_a);
+	if (ft_issorted(*data->list_a))
 		return ;
-	disorder = compute_disorder(*list_a);
-	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice,
-			disorder / 100, ops, use_bench);	
-	if (use_bench)
-		ft_bench(algorithm_name, disorder, ops);
+	data->disorder = compute_disorder(*data->list_a);
+	if (data->use_bench)
+		ft_bench(ft_call_algorithm(data), data->disorder, data->ops);
+	else
+		ft_call_algorithm(data);
 }
 
 int	main(int argc, char **argv)
@@ -102,13 +100,18 @@ int	main(int argc, char **argv)
 	t_stack			*list_a;
 	t_stack			*list_b;
 	t_operations	ops;
-	
-	ft_fillstruct_ops(&ops);
-	list_a = NULL;
-	list_b = NULL;
+	t_sort_data		data;
+
 	if (argc < 2)
 		return (0);
-	ft_call_functions_main(argc, argv, &list_a, &list_b, &ops);
+	list_a = NULL;
+	list_b = NULL;
+	ft_fillstruct_ops(&ops);
+	data.list_a = &list_a;
+	data.list_b = &list_b;
+	data.ops = &ops;
+	data.argv = argv;
+	ft_call_functions_main(&data, argc);
 	ft_exit(&list_a, &list_b);
 	return (0);
 }
