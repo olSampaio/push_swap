@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:40:47 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 17:38:27 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:21:06 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../push_swap.h"
 
 static void	ft_organize_return(t_stack **list_a, t_stack **list_b,
-		t_operations *ops)
+		t_operations *ops, int use_bench)
 {
 	t_stack	*bigger;
 	int		nearest;
@@ -25,11 +25,11 @@ static void	ft_organize_return(t_stack **list_a, t_stack **list_b,
 		nearest = ft_nearest_end(bigger, ft_lstsize(*list_b));
 		if (nearest == 1)
 			while (*list_b != bigger)
-				rb(list_b, ops);
+				rb(list_b, ops, use_bench);
 		else
 			while (*list_b != bigger)
-				rrb(list_b, ops);
-		pa(list_a, list_b, ops);
+				rrb(list_b, ops, use_bench);
+		pa(list_a, list_b, ops, use_bench);
 	}
 }
 
@@ -62,7 +62,7 @@ static void	ft_bucket_nearest(t_stack *list, int size, int min_index,
 }
 
 static void	ft_process_bucket(t_stack **list_a, t_stack **list_b, int *size,
-		int min_index, int max_index, t_operations *ops)
+		int min_index, int max_index, t_operations *ops, int use_bench)
 {
 	int		bucket_atual_size;
 	int		better_move;
@@ -75,12 +75,13 @@ static void	ft_process_bucket(t_stack **list_a, t_stack **list_b, int *size,
 	{
 		ft_bucket_nearest(*list_a, *size, min_index, max_index, &better_move,
 			&better_node);
-		ft_move_best(list_a, list_b, better_move, better_node, ops);
+		ft_move_best(list_a, list_b, better_move, better_node, ops, use_bench);
 		(*size)--;
 	}
 }
 
-void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
+void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops,
+	int use_bench)
 {
 	int	size;
 	int	qt_buckets;
@@ -100,8 +101,8 @@ void	ft_bucket_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
 		min_index = max_index - (bucket_size - 1);
 		if (min_index < 0)
 			min_index = 0;
-		ft_process_bucket(list_a, list_b, &size, min_index, max_index, ops);
+		ft_process_bucket(list_a, list_b, &size, min_index, max_index, ops, use_bench);
 		max_index = max_index - bucket_size;
 	}
-	ft_organize_return(list_a, list_b, ops);
+	ft_organize_return(list_a, list_b, ops, use_bench);
 }

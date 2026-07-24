@@ -6,14 +6,14 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:17:09 by lusampai          #+#    #+#             */
-/*   Updated: 2026/06/17 14:17:02 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 21:52:15 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_percentage(void)
+int	ft_print_percentage(int fd)
 {
-	ft_putchar_fd('%', 1);
+	ft_putchar_fd('%', fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:55:42 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 17:26:23 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:12:34 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,27 @@ static void	ft_reverse_rotate(t_stack **list)
 	penultimate -> next = NULL;							// O penultimate -> next será NULL, pois antepenúltimo elemento agora se tornou o último
 }
 
-void	rra(t_stack **list_a, t_operations *ops)
+void	rra(t_stack **list_a, t_operations *ops, int use_bench)
 {
 	ft_reverse_rotate(list_a);	
 	ops->rra++;
-	ft_printf("rra\n");
+	if (use_bench == 0)
+		ft_printf(1, "rra\n");
 }
 
-void	rrb(t_stack **list_b, t_operations *ops)
+void	rrb(t_stack **list_b, t_operations *ops, int use_bench)
 {	
 	ft_reverse_rotate(list_b);
 	ops->rrb++;
-	ft_printf("rrb\n");
+	if (use_bench == 0)
+		ft_printf(1, "rrb\n");
 }
 
-void	rrr(t_stack **list_a, t_stack **list_b, t_operations *ops)
+void	rrr(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
 	ft_reverse_rotate(list_a);
 	ft_reverse_rotate(list_b);
 	ops->rrr++;
-	ft_printf("rrr\n");
+	if (use_bench == 0)
+		ft_printf(1, "rrr\n");
 }

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:26:11 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 18:39:28 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:17:25 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_sort_two(t_stack **list_a, t_operations *ops)
+void	ft_sort_two(t_stack **list_a, t_operations *ops, int use_bench)
 {
 	if ((*list_a)->value > (*list_a)->next->value)
-		sa(list_a, ops);
+		sa(list_a, ops, use_bench);
 }
 
 static int	see_case(t_stack **list_a)
@@ -44,27 +44,27 @@ static int	see_case(t_stack **list_a)
 	return (0);
 }
 
-void	ft_sort_three(t_stack **list_a, t_operations *ops)
+void	ft_sort_three(t_stack **list_a, t_operations *ops, int use_bench)
 {
 	int	number;
 
 	number = see_case(list_a);
 	if (number == 1)
 	{
-		ra(list_a, ops);
-		sa(list_a, ops);
+		ra(list_a, ops, use_bench);
+		sa(list_a, ops, use_bench);
 	}
 	else if (number == 2)
-		ra(list_a, ops);
+		ra(list_a, ops, use_bench);
 	else if (number == 3)
-		sa(list_a, ops);
+		sa(list_a, ops, use_bench);
 	else if (number == 4)
-		rra(list_a, ops);
+		rra(list_a, ops, use_bench);
 	else if (number == 5)
 	{
-		sa(list_a, ops);
-		ra(list_a, ops);
+		sa(list_a, ops, use_bench);
+		ra(list_a, ops, use_bench);
 	}
 	else if (number == 6)
-		sa(list_a, ops);
+		sa(list_a, ops, use_bench);
 }

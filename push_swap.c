@@ -6,52 +6,13 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 19:02:55 by armarque         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 18:56:20 by lusampai         ###   ########.fr       */
->>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
+/*   Updated: 2026/07/23 22:10:12 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
-<<<<<<< HEAD
-static void	ft_build_list(t_stack **list_a, char **argv, int argc)
-{
-	int		i;
-	t_stack	*new_node;
-	long	value;
-
-	i = argc - 1;
-	while (i >= 0)
-	{
-		if (ft_isnumber(argv[i]) == 1)
-		{
-			value = ft_atoi(argv[i]);
-			if (value > INT_MAX || value < INT_MIN)
-				ft_error(list_a);
-			if (ft_is_repeated(*list_a, value))
-			{
-				ft_error(list_a);
-				return ;
-			}
-			new_node = malloc(sizeof(t_stack));
-			new_node->value = (int)value;
-			new_node->index = 0;
-			new_node->next = NULL;
-			new_node->prev = NULL;
-			ft_lstadd_front(list_a, new_node);
-		}
-		else
-			ft_error(list_a);
-		i--;
-	}
-}
-
-=======
->>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
 static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
@@ -76,31 +37,31 @@ static int	verify_flags(char **argv, int *use_bench)
 }
 
 static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
-		int algorithm_choice, int disorder, t_operations *ops)
+		int algorithm_choice, int disorder, t_operations *ops, int use_bench)
 {
 	int	sizelist;
 
 	sizelist = ft_lstsize(*list_a);
 	if (sizelist == 2)
-		return (ft_sort_two(list_a, ops), "Two elements / O(1)");
+		return (ft_sort_two(list_a, ops, use_bench), "Two elements / O(1)");
 	else if (sizelist == 3)
-		return (ft_sort_three(list_a, ops), "Three elements / O(1)");
+		return (ft_sort_three(list_a, ops, use_bench), "Three elements / O(1)");
 	if (algorithm_choice == 4)
 		algorithm_choice = 0;
 	if (algorithm_choice == 1)
-		return (ft_selection_sort(list_a, list_b, ops), "Simple / O(n²)");
+		return (ft_selection_sort(list_a, list_b, ops, use_bench), "Simple / O(n²)");
 	else if (algorithm_choice == 2)
-		return (ft_bucket_sort(list_a, list_b, ops), "Medium / O(n√n)");
+		return (ft_bucket_sort(list_a, list_b, ops, use_bench), "Medium / O(n√n)");
 	else if (algorithm_choice == 3)
-		return (ft_radix_sort(list_a, list_b, ops), "Complex / O(n log n)");
+		return (ft_radix_sort(list_a, list_b, ops, use_bench), "Complex / O(n log n)");
 	else if (algorithm_choice == 0)
 	{
 		if (disorder < 20)
-			return (ft_selection_sort(list_a, list_b, ops), "Adaptive / O(n²)");
+			return (ft_selection_sort(list_a, list_b, ops, use_bench), "Adaptive / O(n²)");
 		else if (20 <= disorder && disorder <= 50)
-			return (ft_bucket_sort(list_a, list_b, ops), "Adaptive / O(n√n)");
+			return (ft_bucket_sort(list_a, list_b, ops, use_bench), "Adaptive / O(n√n)");
 		else
-			return (ft_radix_sort(list_a, list_b, ops), "Adaptive/ O(n log n)");
+			return (ft_radix_sort(list_a, list_b, ops, use_bench), "Adaptive/ O(n log n)");
 	}
 	return (0);
 }
@@ -129,8 +90,7 @@ static void	ft_call_functions_main(int argc, char **arguments, t_stack **list_a,
 		return ;
 	disorder = compute_disorder(*list_a);
 	algorithm_name = ft_call_algorithm(list_a, list_b, algorithm_choice,
-			disorder / 100, ops);
-	fprintf(stderr, "Algoritmo: %s (disorder: %d)\n", algorithm_name, disorder);
+			disorder / 100, ops, use_bench);	
 	if (use_bench)
 		ft_bench(algorithm_name, disorder, ops);
 }
@@ -140,17 +100,12 @@ int	main(int argc, char **argv)
 	t_stack			*list_a;
 	t_stack			*list_b;
 	t_operations	ops;
-
-	// char			**arguments;
-	// arguments = ft_split(*argv, ' ');
+	
 	ft_fillstruct_ops(&ops);
 	list_a = NULL;
 	list_b = NULL;
 	if (argc < 2)
-	{
-		printf("Uso: %s <numeros>\n", argv[0]);
-		return (1);
-	}
+		return (0);
 	ft_call_functions_main(argc, argv, &list_a, &list_b, &ops);
 	ft_exit(&list_a, &list_b);
 	return (0);

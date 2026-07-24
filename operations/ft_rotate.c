@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:58:32 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 12:37:03 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:13:01 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,27 @@ static void	ft_rotate(t_stack **list)
 	(*list) -> prev = NULL;								// O node_b -> prev será NULL, pois ele agora é a cabeça da lista
 }
 
-void	ra(t_stack **list_a, t_operations *ops)
+void	ra(t_stack **list_a, t_operations *ops, int use_bench)
 {
 	ft_rotate(list_a);
 	ops->ra++;
-	ft_printf("ra\n");
+	if (use_bench == 0)
+		ft_printf(1, "ra\n");
 }
 
-void	rb(t_stack **list_b, t_operations *ops)
+void	rb(t_stack **list_b, t_operations *ops, int use_bench)
 {	
 	ft_rotate(list_b);
 	ops->rb++;
-	ft_printf("rb\n");
+	if (use_bench == 0)
+		ft_printf(1, "rb\n");
 }
 
-void	rr(t_stack **list_a, t_stack **list_b, t_operations *ops)
+void	rr(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
 	ft_rotate(list_a);
 	ft_rotate(list_b);
 	ops->rr++;
-	ft_printf("rr\n");
+	if (use_bench == 0)
+		ft_printf(1, "rr\n");
 }

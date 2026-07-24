@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:36:51 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/22 18:45:33 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:11:54 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,22 @@ static void	ft_push(t_stack **src, t_stack **dest)
 	*dest = top_src;
 }
 
-void	pa(t_stack **a, t_stack **b, t_operations *ops)
+void	pa(t_stack **a, t_stack **b, t_operations *ops, int use_bench)
 {
 	if (!b || !*b)
 		return ;
 	ft_push(b, a);
 	ops->pa++;
-	ft_printf("pa\n");
+	if (use_bench == 0)
+		ft_printf(1, "pa\n");
 }
 
-void	pb(t_stack **a, t_stack **b, t_operations *ops)
+void	pb(t_stack **a, t_stack **b, t_operations *ops, int use_bench)
 {
 	if (!a || !*a)
 		return ;
 	ft_push(a, b);
 	ops->pb++;
-	ft_printf("pb\n");
+	if (use_bench == 0)
+		ft_printf(1, "pb\n");
 }

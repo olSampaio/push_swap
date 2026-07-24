@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_algorithm.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:11:54 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/22 13:53:52 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:18:29 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../push_swap.h"
 
 static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
-		t_operations *ops)
+		t_operations *ops, int use_bench)
 {
 	int	i;
 	int	lstsize;
@@ -26,10 +26,10 @@ static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
 	while (lstsize > i)
 	{
 		if (((*list_a)->index >> num_bits) & 1)
-			ra(list_a, ops);
+			ra(list_a, ops, use_bench);
 		else
 		{
-			pb(list_a, list_b, ops);
+			pb(list_a, list_b, ops, use_bench);
 			pbquantity++;
 		}
 		i++;
@@ -37,7 +37,7 @@ static int	dopbra(t_stack **list_a, t_stack **list_b, int num_bits,
 	return (pbquantity);
 }
 
-void	ft_radix_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
+void	ft_radix_sort(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
 	int	num_bits;
 	int	bits;
@@ -49,10 +49,10 @@ void	ft_radix_sort(t_stack **list_a, t_stack **list_b, t_operations *ops)
 	while (num_bits != bits)
 	{
 		i = 0;
-		pbquantity = (dopbra(list_a, list_b, num_bits, ops));
+		pbquantity = (dopbra(list_a, list_b, num_bits, ops, use_bench));
 		while (i < pbquantity)
 		{
-			pa(list_a, list_b, ops);
+			pa(list_a, list_b, ops, use_bench);
 			i++;
 		}
 		num_bits++;
