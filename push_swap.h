@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 23:33:33 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/24 09:43:45 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int					ft_strcmp(const char *s1, const char *s2);
 int					ft_isdigit(int c);
 int					ft_isnumber(char *str);
 char				*ft_itoa(int n);
-int					ft_is_repeated(t_stack *list_a, int value);
+int					ft_is_repeated(t_sort_data *data);
 void				ft_lstclear(t_stack **lst);
 void				ft_error(t_stack **list_a);
 int					ft_issorted(t_stack *list_a);

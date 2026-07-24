@@ -6,20 +6,29 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 16:59:15 by armarque          #+#    #+#             */
-/*   Updated: 2026/07/23 23:56:52 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/24 10:08:19 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
-int	ft_is_repeated(t_stack *list_a, int value)
+int	ft_is_repeated(t_sort_data *data)
 {
-	while (list_a)
+	t_stack	*primary_value;
+	t_stack	*secundary_value;
+
+	primary_value = *data->list_a;
+	while (primary_value)
 	{
-		if (list_a->value == value)
-			return (1);
-		list_a = list_a->next;
+		secundary_value = primary_value->next;
+		while (secundary_value)
+		{
+			if (secundary_value->value == primary_value->value)
+				return (1);
+			secundary_value = secundary_value->next;
+		}
+		primary_value = primary_value->next;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 23:51:11 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/24 10:19:10 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	verify_flags(char **argv, int *use_bench)
 		*use_bench = 1;
 		i = 2;
 	}
+	if (i >= 1 || argv[i])
+		return (0);
 	if (ft_strcmp(argv[i], "--simple") == 0)
 		algorithm = 1;
 	else if (ft_strcmp(argv[i], "--medium") == 0)
@@ -85,6 +87,11 @@ static void	ft_call_functions_main(t_sort_data *data, int argc)
 		offset++;
 	data->argv = ft_prepare_numbers(data->argv, argc, offset, &newargc);
 	ft_build_list(data->list_a, data->argv, newargc);
+	if (ft_is_repeated(data) == 1)
+	{
+		ft_error(data->list_a);
+		return ;
+	}
 	ft_set_index(*data->list_a);
 	if (ft_issorted(*data->list_a))
 		return ;
