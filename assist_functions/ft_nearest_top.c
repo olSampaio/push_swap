@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nearest_end.c                                   :+:      :+:    :+:   */
+/*   ft_nearest_top.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/17 19:45:33 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 21:28:30 by armarque         ###   ########.fr       */
+/*   Created: 2026/07/23 21:31:12 by armarque          #+#    #+#             */
+/*   Updated: 2026/07/23 21:31:24 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../ft_printf/ft_printf.h"
 #include "../push_swap.h"
 
-int	ft_nearest_end(t_stack *node, int size)
+int	ft_nearest_top(t_stack *list, t_stack *node, int size)
 {
-	int count_steps;
+	int pos;
 
-	count_steps = 0;
-
-	while (node->next)
+	pos = 0;
+	while (list != node)
 	{
-		count_steps++;
-		node = node->next;
+		pos++;
+		list = list->next;
 	}
-	if (count_steps >= size / 2)
+	if (pos <= size / 2)
 		return (1);
-	else
-		return (2);
+	return (0);
 }

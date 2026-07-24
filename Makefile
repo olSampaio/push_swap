@@ -6,7 +6,7 @@
 #    By: armarque <armarque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/22 16:49:26 by lusampai          #+#    #+#              #
-#    Updated: 2026/07/23 18:44:17 by armarque         ###   ########.fr        #
+#    Updated: 2026/07/23 21:33:31 by armarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS	= push_swap.c compute_disorder.c algorithms/simple_algorithm.c algorithms/m
 	assist_functions/ft_itoa.c assist_functions/ft_lstadd_front.c assist_functions/ft_lstlast.c assist_functions/ft_lstsize.c \
 	assist_functions/ft_nearest_end.c assist_functions/ft_search_index.c assist_functions/ft_set_index.c assist_functions/ft_strcmp.c \
 	assist_functions/ft_error.c assist_functions/ft_lstclear.c assist_functions/ft_isrepeated.c assist_functions/ft_issorted.c assist_functions/ft_exit.c \
-	assist_functions/ft_split.c assist_functions/ft_fillstruct_ops.c assist_functions/ft_prepare_numbers.c algorithms/ft_sort.c
+	assist_functions/ft_split.c assist_functions/ft_fillstruct_ops.c assist_functions/ft_prepare_numbers.c assist_functions/ft_nearest_top.c algorithms/ft_sort.c
 
 # OBJETOS GERADOS A PARTIR DOS ARQUIVOS FONTE
 OBJS	= $(SRCS:.c=.o)

@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 19:02:55 by armarque         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 18:56:20 by lusampai         ###   ########.fr       */
->>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
+/*   Updated: 2026/07/23 21:17:25 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "push_swap.h"
 
-<<<<<<< HEAD
 static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
@@ -50,8 +45,6 @@ static void	ft_build_list(t_stack **list_a, char **argv, int argc)
 	}
 }
 
-=======
->>>>>>> e07a644353aa7eb3efe6176bbca656fa4f48b57a
 static int	verify_flags(char **argv, int *use_bench)
 {
 	int	i;
@@ -85,6 +78,8 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 		return (ft_sort_two(list_a, ops), "Two elements / O(1)");
 	else if (sizelist == 3)
 		return (ft_sort_three(list_a, ops), "Three elements / O(1)");
+	else if (sizelist == 5)
+		return (ft_sort_five(list_a, list_b, ops), "Five elements / O(1)");
 	if (algorithm_choice == 4)
 		algorithm_choice = 0;
 	if (algorithm_choice == 1)

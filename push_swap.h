@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 18:43:15 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/23 21:32:06 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void				ft_fillstruct_ops(t_operations *ops);
 char				**ft_prepare_numbers(char **argv, int argc, int offset,
 						int *count);
 int					see_size(char **argv);
+int					ft_nearest_top(t_stack *list, t_stack *node, int size);
 
 // ALGORITMOS
 
@@ -98,6 +99,8 @@ void				ft_radix_sort(t_stack **list_a, t_stack **list_b,
 void				ft_sort_two(t_stack **list_a, t_operations *ops);
 
 void				ft_sort_three(t_stack **list_a, t_operations *ops);
+void				ft_sort_five(t_stack **list_a, t_stack **list_b,
+						t_operations *ops);
 
 // ALGORITMOS - UTILS
 
