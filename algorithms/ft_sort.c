@@ -6,11 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 17:26:11 by armarque          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/23 22:17:25 by lusampai         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/23 21:32:58 by armarque         ###   ########.fr       */
->>>>>>> a522a3c409b075674fa00f0b33d036127c170fa5
+/*   Updated: 2026/07/23 22:28:19 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +66,6 @@ void	ft_sort_three(t_stack **list_a, t_operations *ops, int use_bench)
 		sa(list_a, ops, use_bench);
 		ra(list_a, ops, use_bench);
 	}
-<<<<<<< HEAD
-	else if (number == 6)
-		sa(list_a, ops, use_bench);
-=======
 	else if (number == 0)
 		return ;
 }
@@ -94,7 +86,7 @@ t_stack	*ft_get_smaller_index(t_stack **list_a)
 	return (smaller);
 }
 
-void	ft_sort_five(t_stack **list_a, t_stack **list_b, t_operations *ops)
+void	ft_sort_five(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
 	t_stack	*smaller;
 
@@ -103,14 +95,13 @@ void	ft_sort_five(t_stack **list_a, t_stack **list_b, t_operations *ops)
 		smaller = ft_get_smaller_index(list_a);
 		if (ft_nearest_top(*list_a, smaller, ft_lstsize(*list_a)))
 			while (*list_a != smaller)
-				ra(list_a, ops);
+				ra(list_a, ops, use_bench);
 		else
 			while (*list_a != smaller)
-				rra(list_a, ops);
-		pb(list_a, list_b, ops);
+				rra(list_a, ops, use_bench);
+		pb(list_a, list_b, ops, use_bench);
 	}
-	ft_sort_three(list_a, ops);
-	pa(list_a, list_b, ops);
-	pa(list_a, list_b, ops);
->>>>>>> a522a3c409b075674fa00f0b33d036127c170fa5
+	ft_sort_three(list_a, ops, use_bench);
+	pa(list_a, list_b, ops, use_bench);
+	pa(list_a, list_b, ops, use_bench);
 }
