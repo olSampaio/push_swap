@@ -6,7 +6,11 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:38:29 by lusampai          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/07/23 22:19:37 by lusampai         ###   ########.fr       */
+=======
+/*   Updated: 2026/07/23 21:32:06 by armarque         ###   ########.fr       */
+>>>>>>> a522a3c409b075674fa00f0b33d036127c170fa5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +92,7 @@ char				**ft_prepare_numbers(char **argv, int argc, int offset,
 int					see_size(char **argv);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_build_list(t_stack **list_a, char **argv, int argc);
+int					ft_nearest_top(t_stack *list, t_stack *node, int size);
 
 // ALGORITMOS
 
@@ -99,7 +104,13 @@ void				ft_radix_sort(t_stack **list_a, t_stack **list_b,
 						t_operations *ops, int use_bench);
 void				ft_sort_two(t_stack **list_a, t_operations *ops, int use_bench);
 
+<<<<<<< HEAD
 void				ft_sort_three(t_stack **list_a, t_operations *ops, int use_bench);
+=======
+void				ft_sort_three(t_stack **list_a, t_operations *ops);
+void				ft_sort_five(t_stack **list_a, t_stack **list_b,
+						t_operations *ops);
+>>>>>>> a522a3c409b075674fa00f0b33d036127c170fa5
 
 // ALGORITMOS - UTILS
 

@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 22:10:12 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/23 22:24:33 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ static char	*ft_call_algorithm(t_stack **list_a, t_stack **list_b,
 	if (sizelist == 2)
 		return (ft_sort_two(list_a, ops, use_bench), "Two elements / O(1)");
 	else if (sizelist == 3)
+<<<<<<< HEAD
 		return (ft_sort_three(list_a, ops, use_bench), "Three elements / O(1)");
+=======
+		return (ft_sort_three(list_a, ops), "Three elements / O(1)");
+	else if (sizelist == 5)
+		return (ft_sort_five(list_a, list_b, ops), "Five elements / O(1)");
+>>>>>>> a522a3c409b075674fa00f0b33d036127c170fa5
 	if (algorithm_choice == 4)
 		algorithm_choice = 0;
 	if (algorithm_choice == 1)
