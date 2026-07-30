@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/30 16:48:17 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/30 18:09:42 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ static void	ft_call_functions_main(t_sort_data *data, int argc)
 		return ;
 	}
 	ft_set_index(*data->list_a);
-	if (ft_issorted(*data->list_a))
-		return ;
 	data->disorder = compute_disorder(*data->list_a);
 	if (data->use_bench)
 		ft_bench(ft_call_algorithm(data), data->disorder, data->ops);
-	else
+	if (ft_issorted(*data->list_a))
+		return ;
+	if (!(data->use_bench))
 		ft_call_algorithm(data);
 }
 
