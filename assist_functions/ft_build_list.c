@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 12:20:22 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 23:49:46 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/30 15:55:30 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,16 @@ void	ft_build_list(t_stack **list_a, char **argv, int argc)
 		if (ft_isnumber(argv[i]) == 1)
 		{
 			new_node = malloc(sizeof(t_stack));
+			if (!new_node)
+				return (ft_error(list_a));
 			new_node->value = ft_atoi(argv[i]);
 			new_node->index = 0;
 			new_node->next = NULL;
 			new_node->prev = NULL;
 			ft_lstadd_front(list_a, new_node);
-		}		
+		}
+		else
+			return (ft_error(list_a));
 		i--;
 	}
 }
