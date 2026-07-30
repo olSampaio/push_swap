@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:59:27 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 23:54:54 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:13:36 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,25 @@ static void	ft_swap(t_stack **list)
 
 void	sa(t_stack **list_a, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_swap(list_a);
 	ops->sa++;
-	if (use_bench == 0)
-		ft_printf(1, "sa\n");
+	ft_printf(1, "sa\n");
 }
 
 void	sb(t_stack **list_b, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_swap(list_b);
 	ops->sb++;
-	if (use_bench == 0)
-		ft_printf(1, "sb\n");
+	ft_printf(1, "sb\n");
 }
 
 void	ss(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_swap(list_a);
 	ft_swap(list_b);
 	ops->ss++;
-	if (use_bench == 0)
-		ft_printf(1, "ss\n");
+	ft_printf(1, "ss\n");
 }
