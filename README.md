@@ -12,6 +12,8 @@ The goal of this project is to develop a program that sorts a stack in ascending
 
 This flag selects the Selection Sort algorithm, which is optimized for small input sizes.
 
+For each remaining element in stack A, the algorithm performs a linear scan (`ft_get_smaller`) to find the minimum value, then rotates A (`ra` or `rra`, whichever side is closer) until that element reaches the top, and pushes it onto B (`pb`). Once A is empty, all elements are pushed back (`pa`), restoring the sorted order. Since each of the n elements requires an O(n) scan plus O(n) rotations in the worst case, the total cost is O(n²) operations.
+
 **Time complexity:** O(n²)  
 **Space complexity:** O(1)
 
@@ -19,12 +21,16 @@ This flag selects the Selection Sort algorithm, which is optimized for small inp
 
 This flag selects the Bucket Sort algorithm, which is optimized for medium-sized inputs with a relatively low level of disorder.
 
+The stack is split into √n buckets based on each element's relative index (`ft_bucket_count`, `ft_bucket_init`), each covering a contiguous range of ranks. For each bucket, the algorithm repeatedly finds the closest element within that range (`ft_bucket_nearest`), rotates A the shortest way to bring it to the top, and  ushes it onto B (`ft_move_best`). Once all buckets are processed, `ft_organize_return` empties B back into A by repeatedly rotating to the largest remaining  alue and pushing it in (`pa`). Since each of the n elements needs an O(√n) search plus O(√n) rotation within its bucket, the total cost is O(n√n) operations.
+
 **Time complexity:** O(n√n)  
 **Space complexity:** O(1)
 
 #### `--complex` (Radix Sort)
 
 This flag selects the Radix Sort algorithm, which is optimized for large input sizes, regardless of the initial level of disorder.
+
+The stack is sorted based on each element's relative index (its rank between 0 and n-1), processing one bit at a time, least significant first. In each bit pass, every element in A is checked once: if the bit is 1 it's rotated (`ra`) to the end; if it's 0 it's pushed to B (`pb`), then pushed back (`pa`) to preserve order. Since each element is processed once per one of log(n) bit passes, the total cost is O(n log n) operations.  Note: since sorting is based on the relative index (always the set {0, ..., n-1}) rather than the raw values, the total number of operations depends only on n — not on the initial order. That's why shuffling the same n values with `shuf` doesn't change the operation count, only which elements move to `ra` vs `pb` in each pass.
 
 **Time complexity:** O(n log n)  
 **Space complexity:** O(1)
@@ -110,4 +116,14 @@ make
 
 ### Use of AI
 
-AI was used throughout the development of this project to assist with learning and understanding the algorithms, debugging, code review, and Git management. AI was also used to help create and improve this README file.
+AI tools (ChatGPT and Claude) were used to support the development of this project,
+specifically for:
+
+- Understanding sorting algorithm complexity and how it applies to the Push_swap
+  operation model.
+- Debugging the bucket sort's index-range logic and the radix sort's bit processing.
+- Code review for Norm compliance.
+- Drafting and formatting this README.
+
+All AI-assisted content was reviewed and understood by both learners before
+submission.

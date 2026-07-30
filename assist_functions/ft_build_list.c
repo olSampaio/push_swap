@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_build_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 12:20:22 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/30 18:04:04 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/30 20:02:00 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	ft_build_list(t_stack **list_a, char **argv, int argc)
 {
 	int		i;
 	t_stack	*new_node;
-	int		num;
+	long	num;
 
 	i = argc - 1;
 	while (i >= 0)
 	{
 		if (ft_isnumber(argv[i]) == 1)
-		{
+		{		
 			num = ft_atoi(argv[i]);
 			if (num > 2147483647)
 				return (ft_error(list_a));

@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/30 18:17:47 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:03:31 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*call_sort(t_sort_data *data, int sizelist)
 	return (NULL);
 }
 
-static char	*ft_call_algorithm(t_sort_data *data)
+char	*ft_call_algorithm(t_sort_data *data)
 {
 	int	size;
 
@@ -95,7 +95,7 @@ static void	ft_call_functions_main(t_sort_data *data, int argc)
 	ft_set_index(*data->list_a);
 	data->disorder = compute_disorder(*data->list_a);
 	if (data->use_bench)
-		ft_bench(ft_call_algorithm(data), data->disorder, data->ops);
+		ft_bench(data->algorithm_choice, data->disorder, data->ops, data);
 	if (ft_issorted(*data->list_a))
 		return ;
 	if (!(data->use_bench))
