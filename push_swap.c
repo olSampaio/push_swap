@@ -6,7 +6,7 @@
 /*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 19:18:37 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/30 15:58:11 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/30 18:17:47 by armarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	verify_flags(char **argv, int *use_bench)
 		*use_bench = 1;
 		i = 2;
 	}
-	if (i >= 1 || argv[i])
+	if (!argv[i])
 		return (0);
 	if (ft_strcmp(argv[i], "--simple") == 0)
 		algorithm = 1;
@@ -57,8 +57,6 @@ static char	*ft_call_algorithm(t_sort_data *data)
 	int	size;
 
 	size = ft_lstsize(*data->list_a);
-	if (size == 2 || size == 3 || size == 5)
-		return (call_sort(data, size));
 	if (data->algorithm_choice == 4)
 		data->algorithm_choice = 0;
 	if (data->algorithm_choice == 1)
@@ -70,6 +68,8 @@ static char	*ft_call_algorithm(t_sort_data *data)
 	if (data->algorithm_choice == 3)
 		return (ft_radix_sort(data->list_a, data->list_b, data->ops,
 				data->use_bench), "Complex O(n log n)");
+	if (size == 2 || size == 3 || size == 5)
+		return (call_sort(data, size));
 	return (ft_adaptive_sort(data));
 }
 
@@ -93,12 +93,12 @@ static void	ft_call_functions_main(t_sort_data *data, int argc)
 		return ;
 	}
 	ft_set_index(*data->list_a);
-	if (ft_issorted(*data->list_a))
-		return ;
 	data->disorder = compute_disorder(*data->list_a);
 	if (data->use_bench)
 		ft_bench(ft_call_algorithm(data), data->disorder, data->ops);
-	else
+	if (ft_issorted(*data->list_a))
+		return ;
+	if (!(data->use_bench))
 		ft_call_algorithm(data);
 }
 

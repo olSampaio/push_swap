@@ -6,7 +6,7 @@
 /*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 19:03:59 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 21:59:49 by lusampai         ###   ########.fr       */
+/*   Updated: 2026/07/30 16:16:24 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf(int fd, const char *type, ...)
 			idx++;
 		}
 		else
-			size += write(1, &type[idx], 1);
+			size += write(fd, &type[idx], 1);
 		idx++;
 	}
 	return (va_end(parameter), size);

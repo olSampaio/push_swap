@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armarque <armarque@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lusampai <lusampai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:58:32 by lusampai          #+#    #+#             */
-/*   Updated: 2026/07/23 23:53:43 by armarque         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:13:55 by lusampai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,25 @@ static void	ft_rotate(t_stack **list)
 
 void	ra(t_stack **list_a, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_rotate(list_a);
 	ops->ra++;
-	if (use_bench == 0)
-		ft_printf(1, "ra\n");
+	ft_printf(1, "ra\n");
 }
 
 void	rb(t_stack **list_b, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_rotate(list_b);
 	ops->rb++;
-	if (use_bench == 0)
-		ft_printf(1, "rb\n");
+	ft_printf(1, "rb\n");
 }
 
 void	rr(t_stack **list_a, t_stack **list_b, t_operations *ops, int use_bench)
 {
+	(void)use_bench;
 	ft_rotate(list_a);
 	ft_rotate(list_b);
 	ops->rr++;
-	if (use_bench == 0)
-		ft_printf(1, "rr\n");
+	ft_printf(1, "rr\n");
 }
